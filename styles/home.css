@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+
+:root {
+  --background-color: #dad7cd;
+  --heading-color: #588157;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+nav {
+  padding: 1rem 2rem;
+}
