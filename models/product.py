@@ -4,7 +4,7 @@
 from models.user import User
 
 
-class Product(User):
+class Product():
     """This is the class definition for a Product object"""
 
     def __init__(self, name="", price=0, quantity=0):
