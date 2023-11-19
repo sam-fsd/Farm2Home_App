@@ -15,6 +15,7 @@ class Farmer(User):
         self.products = []
 
     def to_dict(self):
+        """This method returns a dictionary representation of a Farmer instance"""
         farmer_dict = super().to_dict()
         farmer_dict['bio'] = self.bio
         farmer_dict['location'] = self.location
