@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This module defines a class Product"""
 
-from models.user import User
+from datetime import datetime
+import uuid
 
 
 class Product():
@@ -9,7 +10,8 @@ class Product():
 
     def __init__(self, name="", price=0, quantity=0):
         """This is the initialization function for a Product object"""
-        super().__init__()
+        self.product_id = str(uuid.uuid4())
+        self.created_at = datetime.now()
         self.product_name = name
         self.price = price
         self.quantity = quantity
