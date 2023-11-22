@@ -1,5 +1,5 @@
 import unittest
-
+from backend.models.farmer import Farmer
 
 class TestFarmer(unittest.TestCase):
 

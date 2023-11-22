@@ -2,6 +2,8 @@
 """This module defines a class Farmer"""
 
 from models.user import User
+from sqlalchemy import Column, String, DateTime, ForeignKey
+from datetime import datetime
 
 
 class Farmer(User):
@@ -17,6 +19,17 @@ class Farmer(User):
         password (str): The password of the farmer.
         products (list): A list of products associated with the farmer.
     """
+
+    __tablename__ = 'farmers'
+
+    id = Column(String(60), ForeignKey('users.id'), primary_key=True)
+    # created_at = Column(DateTime, default=datetime.utcnow())
+    # name = Column(String(60), nullable=False)
+    # email = Column(String(60), nullable=False)
+    # password = Column(String(60), nullable=False)
+    # location = Column(String(60), nullable=False)
+    bio = Column(String(60), nullable=False)
+    phone = Column(String(60), nullable=False)
 
     def __init__(self, name="", bio="", location="", phone="", email="", password=""):
         """
@@ -42,9 +55,13 @@ class Farmer(User):
         Returns:
             dict: A dictionary representation of a Farmer instance.
         """
-        farmer_dict = super().to_dict()
-        farmer_dict['bio'] = self.bio
-        farmer_dict['location'] = self.location
-        farmer_dict['phone'] = self.phone
-        farmer_dict['products'] = self.products
+        # farmer_dict = super().to_dict()
+        # farmer_dict['bio'] = self.bio
+        # farmer_dict['location'] = self.location
+        # farmer_dict['phone'] = self.phone
+        # farmer_dict['products'] = self.products
+
+        #MOD: used a dictionary comprehension to make this more dynamic incase you change the model
+        farmer_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
+        farmer_dict['products'] = [product.to_dict() for product in self.products]
         return farmer_dict
