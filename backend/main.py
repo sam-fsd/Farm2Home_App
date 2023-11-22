@@ -2,17 +2,13 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from models import *
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 
 if __name__ == "__main__":

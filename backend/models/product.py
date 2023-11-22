@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """This module defines a class Product"""
-
 from datetime import datetime
 import uuid
 from sqlalchemy import Column, String, DateTime, Integer, Float
-# from user import Base
+from models import *
 
-
-class Product():
+class Product(Base):
     """This is the class definition for a Product object"""
 
     __tablename__ = 'products'

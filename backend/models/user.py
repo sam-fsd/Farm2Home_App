@@ -3,14 +3,13 @@
 import uuid
 from datetime import datetime
 from sqlalchemy import Column, String, DateTime
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
 
-class User(Base):
+class User():
     """This is the parent class for all users"""
 
-    __tablename__ = 'users'
+    # __tablename__ = 'users'
     
     id = Column(String(60), primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow())
@@ -29,13 +28,7 @@ class User(Base):
 
     def to_dict(self):
         """This method returns a dictionary representation of a User instance"""
-        # user_dict = {
-        #     'id': self.id,
-        #     'created_at': self.created_at.isoformat(),
-        #     'name': self.name,
-        #     'email': self.email,
-        #     'location': self.location
-        # }
+
         #MOD: used a dictionary comprehension to make this more dynamic incase you change the model
         user_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
         return user_dict
