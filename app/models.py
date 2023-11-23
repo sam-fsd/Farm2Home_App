@@ -65,7 +65,7 @@ class Farmer(User, Base):
 
     __tablename__ = 'farmers'
 
-    farmer_id = Column(String(60), ForeignKey('users.id'), primary_key=True)
+    # farmer_id = Column(String(60), ForeignKey('users.id'), primary_key=True)
     bio = Column(String(60), nullable=False)
     phone = Column(String(60), nullable=False)
     products = relationship("Product", backref="farmer")
@@ -85,12 +85,12 @@ class Farmer(User, Base):
         return farmer_dict
 
 
-class Customer(User):
+class Customer(User, Base):
     """Defines attributes of a customer"""
 
     __tablename__ = 'customers'
 
-    id = Column(String(60), ForeignKey('users.id'), primary_key=True)
+    # id = Column(String(60), ForeignKey('users.id'), primary_key=True)
 
     def __init__(self, name="", location="", email="", password=""):
         """This is the initialization function for a Customer object"""
