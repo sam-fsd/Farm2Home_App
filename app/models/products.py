@@ -17,6 +17,8 @@ class Product(Base):
     product_name = Column(String(60), nullable=False)
     price = Column(Float, nullable=False)
     quantity = Column(Integer, nullable=False)
+    farmer_id = Column(String, ForeignKey('farmers.id'))
+    farmer = relationship("Farmer", back_populates="products")
 
     def __init__(self, name="", price=0, quantity=0):
         """This is the initialization function for a Product object"""
