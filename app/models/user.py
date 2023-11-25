@@ -12,7 +12,7 @@ class User():
 
     # __tablename__ = 'users'
 
-    id = Column(String(60), primary_key=True, default=uuid.uuid4) # generating id attr automatically
+    id = Column(String(60), primary_key=True, default=uuid.uuid4)  # generating id attr automatically
     created_at = Column(DateTime, default=datetime.utcnow())
     name = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False)
@@ -31,9 +31,9 @@ class User():
     def to_dict(self):
         """This method returns a dictionary representation of a User instance"""
 
-        #MOD: used a dictionary comprehension to make this more dynamic incase you change the model
+        # MOD: used a dictionary comprehension to make this more dynamic incase you change the model
         user_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
         return user_dict
 
-    def __repr__(self): # allows more informative and readable
+    def __repr__(self):  # allows more informative and readable
         return f"User(name='{self.name}', email='{self.email}', password='{self.password}', location='{self.location}')"
