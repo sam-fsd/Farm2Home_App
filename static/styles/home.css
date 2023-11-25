@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Roboto&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +15,12 @@
   --background-color: #a3b18a;
   --heading-color: #dad7cd;
   --alt-background-color: #588157;
-  --font: Open Sans;
+  --font: 'Roboto', sans-serif;
+  --Header-font: 'Outfit', sans-serif;
   --second-heading-color: #344e41;
   --dark-green: #3a5a40;
+  --call-to-action: #f0c400;
+  --card-background: #a3b18a;
 }
 
 body {
@@ -38,8 +42,41 @@ nav {
   padding: 1rem 2rem;
 }
 
-.container {
-  margin-bottom: 16px;
+.navbar-brand img {
+  width: 90px;
+  height: 53px;
+  object-fit: cover;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: black;
+  padding-right: 32px;
+}
+
+.nav-link:hover {
+  color: #6bbbae;
+}
+
+.auth-btns {
+  display: flex;
+  margin-left: 100px;
+}
+
+.auth-btn {
+  border-radius: 24px;
+  padding: 4px;
+  width: 100px;
+}
+
+.login-btn {
+  border: 2px solid var(--call-to-action);
+  background-color: var(--background-color);
+  color: white;
+}
+
+.signup-btn {
+  background-color: var(--call-to-action);
 }
 
 .home-image {
@@ -65,9 +102,9 @@ nav {
   position: relative;
   left: 735px;
   width: 400px;
-  bottom: 38px;
+  bottom: 52px;
   height: 60px;
-  border-radius: 10px;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   border: #588157 1px solid;
@@ -78,10 +115,17 @@ nav {
   width: 100%;
   height: 90%;
   margin: 8px;
+  padding-left: 4px;
+  border-radius: 32px;
 }
 
-.btn-success {
-  padding: 8px;
+.search-btn {
+  width: 128px;
+  height: 51px;
+  border-radius: 32px;
+  margin-right: 4px;
+  text-align: center;
+  background-color: var(--call-to-action);
 }
 
 input:focus {
@@ -120,7 +164,7 @@ li a {
 }
 
 li a:hover {
-  color: var(--dark-green);
+  color: var(--call-to-action);
 }
 
 .col-8 {
@@ -130,10 +174,42 @@ li a:hover {
 
 .card {
   margin-left: 8px;
-  background-color: wheat;
+  background-color: var(--card-background);
   margin-top: 8px;
+  height: fit-content;
 }
 
 .card-body h4 {
-  color: var(--second-heading-color);
+  font-family: var(--Header-font);
+  color: white;
+  margin-top: -16px;
+}
+
+.price {
+  font-family: var(--font);
+  color: black;
+}
+
+.more-details {
+  font-size: 12px;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.more-details:hover {
+  color: var(--call-to-action);
+}
+
+.card-product-category {
+  font-family: var(--font);
+  color: gray;
+}
+
+.add-to-list {
+  background-color: var(--alt-background-color);
+  border-radius: 32px;
+  width: 100px;
+  height: 40px;
+  color: var(--call-to-action);
+  font-family: var(--font);
 }
