@@ -1,0 +1,19 @@
+{
+    "editor.inlineSuggest.showToolbar": "onHover",
+    "editor.inlineSuggest.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.showSnippets": true,
+    "editor.suggest.showClasses": true,
+    "editor.suggest.showConstructors": true,
+    "editor.suggest.showFields": true,
+    "editor.suggest.showMethods": true,
+    "editor.suggest.showFunctions": true,
+    "editor.suggest.showVariables": true,
+    "editor.suggest.showConstants": true,
+    "editor.suggest.showStructs": true,
+    "editor.suggest.showEvents": true,
+    "editor.suggest.showOperators": true,
+    "editor.suggest.showUnits": true,           
+    "editor.suggest.showValues": true
+}

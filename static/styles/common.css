@@ -12,7 +12,7 @@ header {
   background-size: cover;
   padding: 30px;
   border-radius: 10px;
-  background-image: url("../media/farm2homelogo.jpg");
+  background-image: url("/images/farm2homelogo.jpg");
   background-repeat: no-repeat;
   margin: 10px;
 }
@@ -38,7 +38,7 @@ header {
   justify-content: center;
 }
 .jumbotron-container {
-  background-image: url("../media/jumbotron.jpg");
+  background-image: url("/images/home-jumbotron-image.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%; /* Adjusted property */
   height: 300px;
