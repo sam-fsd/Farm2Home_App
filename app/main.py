@@ -1,11 +1,17 @@
 from fastapi import FastAPI
 from starlette.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from app.api.products import router as products_router
 
 
 app = FastAPI()
-
+# db = SQlAlchemy(app)
+# call the frontend files
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+# call the api routes
+app.include_router(products_router)
 
 
 @app.get("/")
