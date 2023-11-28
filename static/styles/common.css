@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+
+:root {
+  --font: 'Outfit', sans-serif;
+  --secondary-font: 'Roboto', sans-serif;
+  --background-color: #a3b18a;
+  --call-to-action: #f0c400;
+}
+
 .body {
   background-color: #a3b18a;
 }
@@ -17,7 +38,7 @@ header {
   background-size: cover;
   padding: 30px;
   border-radius: 10px;
-  background-image: url("../assets/images/logo.jpeg");
+  background-image: url('../assets/images/logo.jpeg');
   background-repeat: no-repeat;
   margin-right: 4px;
 }
@@ -31,44 +52,50 @@ header {
 }
 .menu ul li {
   margin-right: 20px;
-  font-weight: bold;
   color: #000000;
   font-size: 20px;
+  font-family: var(--font);
 }
 .menu ul li a {
   text-decoration: none;
   color: #000000;
 }
+
+.menu ul li a:hover {
+  color: #f0c400;
+}
+
 .menu ul li:last-child {
   margin-right: 0;
 }
+
 .login-signup {
   display: flex;
-  align-items: space-around;
-}
-.login {
-  width: 50px;
-  display: flex;
-  align-items: center;
-  height: 3px;
-  margin-right: 0px;
-  border: 2px solid #f0c400;
-
-  padding: 30px;
-  border-radius: 30px;
+  justify-content: space-between;
+  margin-right: 16px;
 }
 
-.signup {
-  width: 50px;
-  display: flex;
-  align-items: center;
-  height: 3px;
-  margin-left: 20px;
-  margin-right: 12px;
-  background-color: #f0c400;
-  padding: 30px;
-  border-radius: 30px;
+.login-btn {
+  border: 2px solid var(--call-to-action);
+  background-color: var(--background-color);
+  color: white;
+  margin-right: 16px;
+  border-radius: 24px;
+  padding: 12px;
+  width: 100px;
+  height: 45px;
+  text-align: center;
 }
+
+.signup-btn {
+  background-color: var(--call-to-action);
+  border-radius: 24px;
+  padding: 12px;
+  width: 100px;
+  height: 45px;
+  text-align: center;
+}
+
 .jumbotron {
   display: flex;
   align-items: center;
@@ -78,13 +105,13 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
-.jumbotron-container {
+.hero {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.jumbotron-container img {
+.hero img {
   width: 100%;
   margin-top: 20px;
   height: 564px;
@@ -102,14 +129,13 @@ header {
   justify-content: center;
   align-items: center;
   margin-left: 60px;
-  left: 100px;
 }
 .intro-text p {
   font-size: 40px;
   width: 810px;
   height: 100px;
   color: white;
-
+  font-family: var(--font);
   margin-bottom: 5px;
 }
 .intro-explainer p {
@@ -119,6 +145,7 @@ header {
   margin-bottom: 5px;
   width: 810px;
   height: 100px;
+  font-family: var(--secondary-font);
 }
 .buy-sell {
   align-self: flex-start;
@@ -126,18 +153,20 @@ header {
   margin-left: 0px;
 }
 .buy {
-  width: 148px;
+  width: 206px;
   height: 45px;
   background-color: #f0c400;
   top: 420px;
   left: 350px;
   border-radius: 24px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .buy p {
   color: #6bbbae;
+  margin-top: 20px;
 }
 .sell p {
   color: #6bbbae;
@@ -156,31 +185,46 @@ header {
   align-items: center;
 }
 
+.benefitsintro {
+  height: fit-content;
+  margin-bottom: -24px;
+}
+
 .benefitsintro p {
   font-size: 40px;
   color: white;
-  margin-bottom: 10px;
+  margin-top: 78.62px;
+  font-family: var(--font);
+  letter-spacing: 2.8px;
 }
+
 .arrow-down {
+  margin-top: 24px;
 }
+
 .farmer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .farmerintro p {
   font-size: 40px;
   color: #215733;
   margin-bottom: 10px;
+  margin-top: 24px;
 }
+
 .farmer-details {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
+
 .farmericon {
   background-repeat: no-repeat;
   background-size: cover;
-  width: 50%;
+  width: 455px;
+  height: 531px;
   margin-right: 20px;
   flex-shrink: 0;
 }
@@ -192,21 +236,37 @@ header {
 .farmerblog {
   display: flex;
   flex-direction: column;
+  width: 448px;
 }
 .farmerblog p {
   font-size: 16px;
-  line-height: 30px;
+  line-height: 24px;
+  color: white;
 }
 .farmer-signup {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 148px;
+  width: 206px;
   height: 45px;
   background-color: #f0c400;
   border-radius: 20px;
-  margin-top: 70px;
+  margin-top: 16px;
 }
+
+.farmer-signup p {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.farmer-signup:hover {
+  cursor: pointer;
+}
+
+.farmer-signup:hover p {
+  color: #215733;
+}
+
 .details2 {
   display: flex;
   flex-direction: column;
@@ -215,11 +275,13 @@ header {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: -30px;
 }
 .buyerintro p {
   font-size: 40px;
   color: #215733;
   margin-bottom: 10px;
+  margin-top: 24px;
 }
 .arrow-down2 {
   display: flex;
@@ -234,31 +296,44 @@ header {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  width: 438px;
+  margin-right: 60px;
 }
 .buyerblog p {
   font-size: 16px;
-  line-height: 30px;
+  line-height: 24px;
+  color: white;
 }
 .buyericon {
   background-repeat: no-repeat;
   background-size: cover;
-  width: 50%;
-  margin-right: 20px;
+  width: 580.808px;
+  height: 436px;
   flex-shrink: 0;
 }
 .buyericon img {
   border-radius: 10px;
   width: 80%;
-  height: 500px;
-  margin-left: 78px;
+  height: 80%;
+  margin-left: 88px;
 }
 .buyer-signup {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 148px;
+  width: 206px;
   height: 45px;
   background-color: #f0c400;
   border-radius: 20px;
-  margin-top: 30px;
+  margin-top: 8px;
+}
+
+.buyer-signup p {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.buyer-signup:hover p {
+  cursor: pointer;
+  color: #215733;
 }

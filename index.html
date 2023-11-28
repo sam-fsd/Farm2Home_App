@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="static/styles/common.css" />
     <title>Farm2Home Marketplace</title>
   </head>
   <body class="body">
-    <header>
+    <header class="container">
       <div class="logo"></div>
       <div class="menu">
         <ul>
@@ -18,24 +24,17 @@
         </ul>
       </div>
       <div class="login-signup">
-        <div class="login">
-          <p>LOGIN</p>
-        </div>
-        <div class="signup">
-          <p>SIGNUP</p>
-        </div>
+        <button class="login-btn">Login</button>
+        <button class="signup-btn">Sign Up</button>
       </div>
     </header>
-    <section class="jumbotron">
-      <div class="jumbotron-container">
+    <section class="container">
+      <div class="hero">
         <img src="static/assets/images/bg-jumbotron.jpg" alt="jumbotronimage" />
         <div class="jumbotron-text">
           <div class="intro-text">
             <p>
-              <b
-                >Harvest The Future, Direct From The Fields<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To
-                Your Table</b
-              >
+              <b>Harvest The Future, Direct From The Fields To Your Table</b>
             </p>
           </div>
           <div class="intro-explainer">
@@ -54,42 +53,62 @@
         </div>
       </div>
     </section>
-    <section class="details">
+    <section class="details container">
       <div class="you-benefit">
         <div class="benefitsintro">
           <p><b>How You Benefit</b></p>
         </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="75"
+          height="4"
+          viewBox="0 0 75 4"
+          fill="none"
+        >
+          <path
+            d="M0 2H75.0067"
+            stroke="#F0C400"
+            stroke-opacity="0.96"
+            stroke-width="3"
+          />
+        </svg>
         <div class="arrow-down">
-          <img src="static/assets/images/Arrow 1.jpg" alt="arrow-down" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="39"
+            viewBox="0 0 16 39"
+            fill="none"
+          >
+            <path
+              d="M7.29289 38.7071C7.68342 39.0976 8.31658 39.0976 8.70711 38.7071L15.0711 32.3431C15.4616 31.9526 15.4616 31.3195 15.0711 30.9289C14.6805 30.5384 14.0474 30.5384 13.6569 30.9289L8 36.5858L2.34314 30.9289C1.95262 30.5384 1.31946 30.5384 0.928931 30.9289C0.538406 31.3195 0.538406 31.9526 0.928931 32.3431L7.29289 38.7071ZM7 -4.37114e-08L7 38L9 38L9 4.37114e-08L7 -4.37114e-08Z"
+              fill="black"
+            />
+          </svg>
         </div>
       </div>
-      <div class="farmer">
-        <div class="farmerintro">
-          <p><b>As a Farmer</b></p>
-        </div>
+      <div class="farmerintro">
+        <p><b>As a Farmer</b></p>
+      </div>
+      <div class="farmer container row">
         <div class="farmer-details">
           <div class="farmericon">
             <img src="static/assets/images/farmer.jpg" alt="farmericon" />
           </div>
           <div class="farmerblog">
             <p>
-              At Farm2Home Marketplace, we empower farmers to cultivate<br />
-              success by providing a direct bridge to a vast market eager for
-              your <br />fresh and high-quality produce. As a farmer, partnering
-              with us means <br />unlocking new opportunities to showcase your
-              harvest to a wider audience.<br />
-              Join our platform to connect with discerning buyers who appreciate
-              the<br />
-              dedication and care you invest in your crops. From small family
-              farms to<br />
-              established agricultural enterprises, our marketplace welcomes
-              all, fostering<br />
-              a community where your hard work is celebrated and your produce
-              finds its <br />way into the homes of those who truly value it.
-              Experience the joy of sharing<br />
-              your harvest with a diverse and appreciative customer base, while
-              we handle<br />
-              the logistics, so you can focus on what you do best—growing
+              At Farm2Home Marketplace, we empower farmers to cultivate success
+              by providing a direct bridge to a vast market eager for your fresh
+              and high-quality produce. As a farmer, partnering with us means
+              unlocking new opportunities to showcase your harvest to a wider
+              audience. Join our platform to connect with discerning buyers who
+              appreciate the dedication and care you invest in your crops. From
+              small family farms to established agricultural enterprises, our
+              marketplace welcomes all, fosterin a community where your hard
+              work is celebrated and your produce finds its way into the homes
+              of those who truly value it. Experience the joy of sharing your
+              harvest with a diverse and appreciative customer base, while we
+              handle the logistics, so you can focus on what you do best—growing
               exceptional crops that enrich lives and nourish communities.
             </p>
             <div class="farmer-signup">
@@ -99,46 +118,50 @@
         </div>
       </div>
     </section>
-    <section class="details2">
+    <section class="details2 container">
       <div class="asabuyer">
         <div class="arrow-down2">
-          <img src="static/assets/images/Arrow 1.jpg" alt="arrow-down" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="39"
+            viewBox="0 0 16 39"
+            fill="none"
+          >
+            <path
+              d="M7.29289 38.7071C7.68342 39.0976 8.31658 39.0976 8.70711 38.7071L15.0711 32.3431C15.4616 31.9526 15.4616 31.3195 15.0711 30.9289C14.6805 30.5384 14.0474 30.5384 13.6569 30.9289L8 36.5858L2.34314 30.9289C1.95262 30.5384 1.31946 30.5384 0.928931 30.9289C0.538406 31.3195 0.538406 31.9526 0.928931 32.3431L7.29289 38.7071ZM7 -4.37114e-08L7 38L9 38L9 4.37114e-08L7 -4.37114e-08Z"
+              fill="black"
+            />
+          </svg>
         </div>
         <div class="buyerintro">
           <p><b>As a Buyer</b></p>
         </div>
       </div>
-      <div class="buyerdetails">
-        <div class="buyerblog">
-          <p>
-            Welcome to Farm2Home Marketplace, where your culinary journey
-            begins<br />
-            with the freshest and finest farm produce at your fingertips. As a
-            buyer, our<br />
-            platform offers you a unique opportunity to connect directly with
-            local<br />
-            farmers, ensuring that every bite is a celebration of quality and
-            sustainability.<br />
-            Say goodbye to generic supermarket options and hello to a
-            personalized,<br />
-            farm-to-table experience. Browse through a curated selection of
-            seasonal<br />
-            delights, handpicked by our dedicated farmers, and savor the
-            unparalleled<br />
-            flavors of produce harvested just for you. With Farm2Home, you're
-            not just<br />
-            buying food; you're supporting local agriculture, reducing your
-            carbon<br />
-            footprint, and indulging in a healthier lifestyle. Join us in
-            redefining the way<br />
-            you experience food—fresh, flavorful, and straight from the source.
-          </p>
-          <div class="buyer-signup">
-            <p><b>Get Started</b></p>
+      <div class="buyerdetails farmer container">
+        <div class="row">
+          <div class="buyerblog col-6">
+            <p>
+              Farm produce at your fingertips. As a buyer, our platform offers
+              you a unique opportunity to connect directly with local farmers,
+              ensuring that every bite is a celebration of quality and
+              sustainability. Say goodbye to generic supermarket options and
+              hello to a personalized, farm-to-table experience. Browse through
+              a curated selection of seasonal delights, handpicked by our
+              dedicated farmers, and savor the unparalleled flavors of produce
+              harvested just for you. With Farm2Home, you're not just buying
+              food; you're supporting local agriculture, reducing your carbon
+              footprint, and indulging in a healthier lifestyle. Join us in
+              redefining the way you experience food—fresh, flavorful, and
+              straight from the source.
+            </p>
+            <div class="buyer-signup">
+              <p><b>Get Started</b></p>
+            </div>
           </div>
-        </div>
-        <div class="buyericon">
-          <img src="static/assets/images/buyerimage.jpg" alt="farmericon" />
+          <div class="buyericon col-6">
+            <img src="static/assets/images/buyerimage.jpg" alt="farmericon" />
+          </div>
         </div>
       </div>
     </section>
