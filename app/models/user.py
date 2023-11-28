@@ -10,9 +10,7 @@ class User():
     this is not a table in the database so does
     not inherit from Base"""
 
-    # __tablename__ = 'users'
-
-    id = Column(String(60), primary_key=True, default=uuid.uuid4)  # generating id attr automatically
+    id = Column(String(60), primary_key=True, default=uuid.uuid4)
     created_at = Column(DateTime, default=datetime.utcnow())
     name = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False)

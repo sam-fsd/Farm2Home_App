@@ -4,8 +4,8 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, String, DateTime, Float, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from models.database import Base
-from models.user import User
+from ..models.database import Base
+from ..models.user import User
 
 
 class Farmer(User, Base):
@@ -16,7 +16,7 @@ class Farmer(User, Base):
     __tablename__ = 'farmers'
 
     bio = Column(String(60), nullable=True)
-    products = relationship("Product", backref="farmer")
+    products = relationship("Product", backref="farmer", cascade="all, delete-orphan")
 
     def __init__(self, name="", bio="", location="", email="", password=""):
 
@@ -28,3 +28,7 @@ class Farmer(User, Base):
         farmer_dict = super().to_dict()
         farmer_dict['products'] = [product.to_dict() for product in self.products]
         return farmer_dict
+    
+    def get_products_by_catgories(self, category):
+        return [product.to_dict() for product in self.products if product.category == category]
+    
