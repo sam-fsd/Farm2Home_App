@@ -152,7 +152,11 @@ header {
   margin-top: auto;
   margin-left: 0px;
 }
-.buy {
+
+.buy-sell a {
+  text-decoration: none;
+}
+.get_started {
   width: 206px;
   height: 45px;
   background-color: #f0c400;
@@ -164,10 +168,16 @@ header {
   justify-content: center;
 }
 
-.buy p {
+.get_started p {
   color: #6bbbae;
   margin-top: 20px;
 }
+
+.get_started p:hover {
+  cursor: pointer;
+  color: #215733;
+}
+
 .sell p {
   color: #6bbbae;
 }
