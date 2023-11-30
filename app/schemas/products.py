@@ -4,20 +4,21 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-class ProductBase(BaseModel):
+
+class ProductCreate(BaseModel):
     product_name: str
     price: float
     quantity: int
-    description: Optional[str] = None
-    image: Optional[str] = None
+    description: Optional[str] = ""
+    image: Optional[str] = ""
+    category: Optional[str] = ""
 
 
-
-class ProductCreate(ProductBase):
-    pass
-
-class Product(ProductBase):
-    created_at: datetime
+class Product(ProductCreate):
+    product_id: str
+    created_at: str
+    farmer_id: str
 
     class Config:
         from_attributes = True
+

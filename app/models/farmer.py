@@ -29,6 +29,6 @@ class Farmer(User, Base):
         farmer_dict['products'] = [product.to_dict() for product in self.products]
         return farmer_dict
     
-    def get_products_by_catgories(self, category):
+    def get_products_by_category(self, category):
         return [product.to_dict() for product in self.products if product.category == category]
     
