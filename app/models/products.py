@@ -12,7 +12,7 @@ class Product(Base):
 
     __tablename__ = 'products'
 
-    product_id = Column(String, primary_key=True, default=str(uuid.uuid4()))
+    product_id = Column(String, primary_key=True, default=uuid.uuid4)
     image = Column(String(200), nullable=True)
     description = Column(String(100), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow())
