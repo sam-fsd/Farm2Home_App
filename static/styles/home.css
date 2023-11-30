@@ -12,15 +12,16 @@
 }
 
 :root {
-  --background-color: #a3b18a;
+  --background-color: rgba(163, 177, 138, 0.42);
   --heading-color: #dad7cd;
   --alt-background-color: #588157;
   --font: 'Roboto', sans-serif;
   --Header-font: 'Outfit', sans-serif;
   --second-heading-color: #344e41;
   --dark-green: #3a5a40;
+  --categories-background: #a3b18a;
   --call-to-action: #f0c400;
-  --card-background: #a3b18a;
+  --card-background: rgba(163, 177, 138, 0.42);
 }
 
 body {
@@ -88,7 +89,6 @@ nav {
 .image-container {
   width: 100%;
   height: 250px;
-  padding: 24px;
 }
 
 .image-container img {
@@ -133,7 +133,7 @@ input:focus {
 }
 
 .product-categories {
-  background-color: var(--alt-background-color);
+  background-color: var(--categories-background);
   right: 115px;
   border-radius: 10px;
   line-height: 2.5;
@@ -141,7 +141,7 @@ input:focus {
 }
 
 .product-categories h3 {
-  color: var(--heading-color);
+  color: white;
   padding: 12px 12px 0 12px;
   font-family: var(--font);
   font-weight: 700;
@@ -150,6 +150,11 @@ input:focus {
 .product-categories li {
   font-family: var(--font);
   font-size: 1.2rem;
+}
+
+.product-categories li a {
+  color: white;
+  text-decoration: none;
 }
 
 .icons {
@@ -175,8 +180,19 @@ li a:hover {
 .card {
   margin-left: 8px;
   background-color: var(--card-background);
-  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
   height: fit-content;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 12px;
 }
 
 .card-body h4 {
@@ -201,8 +217,22 @@ li a:hover {
 }
 
 .card-product-category {
+  display: flex;
+  height: fit-content;
+}
+
+.card-product-category img {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+}
+
+.card-product-category p {
+  font-size: 12px;
   font-family: var(--font);
-  color: gray;
+  color: var(--second-heading-color);
+  color: grey;
+  margin-top: -2px;
 }
 
 .add-to-list {
@@ -210,6 +240,6 @@ li a:hover {
   border-radius: 32px;
   width: 100px;
   height: 40px;
-  color: var(--call-to-action);
+  color: white;
   font-family: var(--font);
 }
