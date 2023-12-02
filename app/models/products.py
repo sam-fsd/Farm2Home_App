@@ -12,7 +12,7 @@ class Product(Base):
 
     __tablename__ = 'products'
 
-    product_id = Column(String, primary_key=True, default=uuid.uuid4)
+    product_id = Column(String, primary_key=True, default=str(uuid.uuid4()))
     image = Column(String(200), nullable=True)
     description = Column(String(100), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow())
@@ -22,9 +22,9 @@ class Product(Base):
     category = Column(String, nullable=True)
     farmer_id = Column(String, ForeignKey('farmers.id'))
 
-    def __init__(self, name="", price=0, quantity=0, description="", image="", category=""):
+    def __init__(self, product_name="", price=0, quantity=0, description="", image="", category=""):
         """This is the initialization function for a Product object"""
-        self.product_name = name
+        self.product_name = product_name
         self.price = price
         self.quantity = quantity
         self.description = description
@@ -33,4 +33,4 @@ class Product(Base):
         
     def to_dict(self):
         """This method returns a dictionary representation of a Product instance"""
-        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+        return {key: getattr(self, key) for key in self.__dict__.keys() if not key.startswith('_')}

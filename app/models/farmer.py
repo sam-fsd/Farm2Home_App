@@ -12,15 +12,15 @@ class Farmer(User, Base):
     """
     A class representing a farmer.
     """
-
     __tablename__ = 'farmers'
 
+    id = Column(String, primary_key=True, default=str(uuid.uuid4()))  # Explicitly define the primary key
     bio = Column(String(60), nullable=True)
     products = relationship("Product", backref="farmer", cascade="all, delete-orphan")
 
-    def __init__(self, name="", bio="", location="", email="", password=""):
+    def __init__(self, name="", bio="", location="", email="", password="", phone=""):
 
-        super().__init__(name, email, password, location)
+        super().__init__(name, email, password, location, phone)
         self.bio = bio
 
     def to_dict(self):
