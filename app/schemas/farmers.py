@@ -29,10 +29,11 @@ class Product(ProductBase):
 class Farmer(BaseModel):
     id: str
     name: str
-    # email: str
+    email: str
     # password: str
     location: str
     phone: str
+    # Products: List[Product] = []
     # bio: str = ""
 
 

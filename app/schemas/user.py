@@ -1,38 +1,34 @@
 #!/usr/bin/python3
 """users schemas"""
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, List
 from datetime import datetime
 
 
-class User(BaseModel):
-    """User schemas"""
-    id: int
-    email: str
-    created_at: datetime
+class UserBase(BaseModel):
     name: str
+    email: EmailStr
+    password: str
     location: str
     phone: str
 
 
-class UserCreate(BaseModel):
-    """User create schemas"""
+class UserCreate(UserBase):
+    pass
+
+
+class FarmerCreate(UserCreate):
+    bio: str
+
+
+class CustomerCreate(BaseModel):
+    name: str
     email: str
     password: str
-    name: Optional[str] = None
-    location: Optional[str] = None
-    phone: Optional[str] = None
+    location: str
 
 
-class Token(BaseModel):
-    """Token schemas"""
-    access_token: str
-    token_type: str = "bearer"
+class UserLogin(BaseModel):
+    email: str
+    password: str
 
-    class Config:
-        orm_mode = True
-
-
-class TokenData(BaseModel):
-    """Token data schemas"""
-    email: Optional[str] = None
