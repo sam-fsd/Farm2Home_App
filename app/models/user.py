@@ -43,19 +43,11 @@ class User():
     
     def verify_password(self, password):
         return self.password == hashlib.sha256(password.encode()).hexdigest()
-        
-    # def to_dict(self):
-    #     """This method returns a dictionary representation of a User instance"""
 
-    #     # MOD: used a dictionary comprehension to make this more dynamic incase you change the model
-    #     user_dict = {column.name: getattr(self, column.name) for column in self.__table__.columns}
-    #     return user_dict
-    
     def to_dict(self):
         """This method returns a dictionary representation of a User instance."""
         user_dict = {key: value for key, value in self.__dict__.items() if not key.startswith('_')}
         return user_dict
-
 
     def __repr__(self):  # allows more informative and readable
         return f"User(name='{self.name}', email='{self.email}', password='{self.password}', location='{self.location}')"

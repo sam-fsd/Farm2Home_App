@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """this module defines the routes for the products"""
-from fastapi import Response, status, HTTPException, Depends, APIRouter
+from fastapi import HTTPException, Depends, APIRouter
 from typing import List
 from sqlalchemy.orm import Session
 from ..models.database import get_db
 from ..models.farmer import Farmer as FarmerModel
 from ..schemas.farmers import Farmer
-# from .crud import create_product, get_products
-from ..oauth2 import get_current_user
 
 
 router = APIRouter(

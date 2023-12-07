@@ -31,11 +31,6 @@ def register(user: Union[FarmerCreate, CustomerCreate],
     if existing_farmer or existing_customer:
         raise HTTPException(status_code=400, detail="Email already registered")
 
-    # Determine user type and create the corresponding instance
-    # if isinstance(user, FarmerCreate):
-    #     db_user = FarmerModel(**user.dict())
-    # elif isinstance(user, CustomerCreate):
-    #     db_user = CustomerModel(**user.dict())
     if user_type == "farmer":
         db_user = FarmerModel(**user.dict())
     elif user_type == "customer":

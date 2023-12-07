@@ -16,8 +16,9 @@ class Farmer(User, Base):
 
     id = Column(String, primary_key=True, default=str(uuid.uuid4()))  # Explicitly define the primary key
     bio = Column(String(60), nullable=True)
+    email = Column(String(100), nullable=False, unique=True)
 
-    products = relationship("Product", backref="farmer", cascade="all, delete-orphan")
+    products = relationship("Product", back_populates="farmer", foreign_keys="Product.farmer_id" , cascade="all, delete-orphan")
 
     def __init__(self, name="", bio="", location="", email="", password="", phone=""):
 

@@ -12,8 +12,10 @@ class ProductCreate(BaseModel):
     description: str = ""
     image: str = ""
     category: str = ""
+    farmer_id: Optional[str] = None
+
 
 class ProductList(ProductCreate):
-    product_id: str
+    # product_id: str
     created_at: datetime
     farmer_id: str

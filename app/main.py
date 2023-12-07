@@ -9,7 +9,7 @@ from app.models import *
 from app.schemas.farmers import Farmer
 
 app = FastAPI()
-# Add this code to initialize the database tables
+# Add this code to initialize the database tables 
 Base.metadata.create_all(bind=engine)
 
 # call the frontend files
