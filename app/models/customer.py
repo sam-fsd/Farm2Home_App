@@ -4,8 +4,8 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, String, DateTime, Float, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from models.database import Base
-from user import User
+from app.models.database import Base
+from app.models.user import User
 
 
 class Customer(User, Base):
@@ -13,6 +13,6 @@ class Customer(User, Base):
 
     __tablename__ = 'customers'
 
-    def __init__(self, name="", location="", email="", password=""):
+    def __init__(self, name="", location="", email="", password="", phone=""):
         """This is the initialization function for a Customer object"""
-        super().__init__(name, email, password, location)
+        super().__init__(name, email, password, location, phone)
