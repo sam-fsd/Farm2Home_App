@@ -20,7 +20,7 @@
 }
 
 .body {
-  background-color: #a3b18a;
+  background-color: var(--background-color);
 }
 header {
   display: flex;
@@ -32,7 +32,7 @@ header {
 }
 
 .logo {
-  width: 80px;
+  width: 90px;
   height: 10px;
   background-position: center;
   background-size: cover;
@@ -63,6 +63,7 @@ header {
 
 .menu ul li a:hover {
   color: #f0c400;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu ul li:last-child {
@@ -176,6 +177,7 @@ header {
 .get_started p:hover {
   cursor: pointer;
   color: #215733;
+  transition: all 0.3s ease-in-out;
 }
 
 .sell p {
@@ -200,12 +202,13 @@ header {
   margin-bottom: -24px;
 }
 
-.benefitsintro p {
-  font-size: 40px;
+.sub-title {
+  font-size: 32px;
   color: white;
-  margin-top: 78.62px;
+  margin-top: 88.62px;
   font-family: var(--font);
   letter-spacing: 2.8px;
+  text-align: center;
 }
 
 .arrow-down {
@@ -219,7 +222,7 @@ header {
 }
 
 .farmerintro p {
-  font-size: 40px;
+  font-size: 24px;
   color: #215733;
   margin-bottom: 10px;
   margin-top: 24px;
@@ -271,10 +274,12 @@ header {
 
 .farmer-signup:hover {
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .farmer-signup:hover p {
   color: #215733;
+  transition: all 0.3s ease-in-out;
 }
 
 .details2 {
@@ -288,7 +293,7 @@ header {
   margin-top: -30px;
 }
 .buyerintro p {
-  font-size: 40px;
+  font-size: 24px;
   color: #215733;
   margin-bottom: 10px;
   margin-top: 24px;
@@ -346,4 +351,390 @@ header {
 .buyer-signup:hover p {
   cursor: pointer;
   color: #215733;
+  transition: all 0.3s ease-in-out;
+}
+
+/* EXPLORE STYLES 
+----------------------------------------*/
+.explore-title {
+  margin-bottom: -8px;
+}
+
+.underline {
+  text-align: center;
+  display: flex;
+  margin: 2px auto;
+}
+
+.showcase-intro-text {
+  width: 568px;
+  margin: 26px auto;
+}
+
+.showcase-intro-text p {
+  color: #215733;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.product-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.product-card {
+  width: 265px;
+  height: 366px;
+  background-color: #0000009c;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.product-card-img img {
+  width: 265px;
+  height: 175px;
+  object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.product-card-text .category {
+  color: grey;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-top: 4px;
+  padding-left: 8px;
+}
+
+.product-card-text h4 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.product-card-text .price {
+  color: #a3b18a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.farmer-location {
+  display: flex;
+  height: fit-content;
+}
+
+.farmer-location img {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+}
+.farmer-location p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  color: white;
+  margin-top: 2px;
+  margin-left: 6px;
+}
+
+.farmer-location .location {
+  color: rgba(107, 187, 174, 0.63);
+}
+
+.farmer-location .farmer {
+  font-size: 12px;
+
+  font-style: normal;
+  color: white;
+  padding-left: 16px;
+}
+
+button.contact-farmer {
+  width: 75px;
+  height: 35px;
+  background: rgba(240, 196, 0, 0.96);
+  border-radius: 20px;
+  margin-left: 8px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+button.contact-farmer:hover {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: #215733;
+}
+
+.explore-more-btn {
+  display: flex;
+  width: 360px;
+  padding: 13px 59px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  background: rgba(240, 196, 0, 0.96);
+  text-transform: capitalize;
+  font-family: Roboto;
+  font-weight: bold;
+  margin: 29px auto;
+  color: white;
+}
+
+.explore-more-btn:hover {
+  cursor: pointer;
+  color: #215733;
+  transition: all 0.3s ease-in-out;
+}
+
+/* TESTIMONIALS STYLES */
+
+.testimonials-intro .sub-title {
+  margin-bottom: -4px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 106px;
+}
+
+.testimonial-item {
+  position: relative;
+  width: 358px;
+  height: 258px;
+  border-radius: 12px;
+  background: #d9d9d98f;
+}
+
+.testimonial-profile {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 139px;
+  top: -40px;
+  border-radius: 50%;
+  background: #f0c400;
+}
+
+.testimonial-profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-item blockquote {
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #215733;
+}
+
+/* CTA STYLES */
+
+.cta {
+  width: 1070px;
+  height: 396px;
+  border-radius: 12px;
+  background: linear-gradient(
+    106deg,
+    rgba(88, 129, 87, 0.63) 29.5%,
+    rgba(107, 187, 174, 0.63) 67.85%
+  );
+  margin: 150.87px auto;
+}
+
+.cta h2 {
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+  text-align: center;
+  padding-top: 51px;
+}
+
+.cta p {
+  color: #215733;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+  padding-top: 24px;
+}
+
+.cta button {
+  width: 360px;
+  padding: 13px 59px;
+  margin: 59px 365px 0;
+  border-radius: 24px;
+  background: rgba(240, 196, 0, 0.96);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cta button:hover {
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+/* FOOOTER STYELS */
+
+footer {
+  background-color: #2157336e;
+}
+
+.footer-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding: 12px;
+}
+
+.footer-logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.about-summary {
+  width: 270px;
+}
+
+.about-summary h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  color: #215733;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.about-summary p {
+  text-align: center;
+  color: white;
+}
+
+.footer-links h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  color: #215733;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.footer-links a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  color: white;
+  margin-bottom: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.footer-links a:hover {
+  color: #f0c400;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer-contactUs h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  color: #215733;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.footer-contactUs p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: white;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.end-of-page-line {
+  width: 100%;
+  height: 16px;
+  background: linear-gradient(
+    106deg,
+    rgba(88, 129, 87, 0.63) 29.3%,
+    rgba(107, 187, 174, 0.63) 67.38%
+  );
+}
+.copyright {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 4px;
 }
