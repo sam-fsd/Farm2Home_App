@@ -87,3 +87,48 @@ cancelMoreDetailsModalBtn.addEventListener('click', () => {
   productMoreDetailsModal.style.display = 'none';
   overylay.style.display = 'none';
 });
+
+//Submitting Buyer farm details
+
+const submitCustomerForm = () => {
+  const form = document.getElementById('customer-form');
+  const formData = new FormData(form);
+
+  //Add the default query parameter
+  formData.append('user_type', 'Customer');
+
+  fetch('/api/v1/register', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.status === 'success') {
+        window.location.href = 'pages/login.html';
+      }
+    })
+    .catch((err) => console.log(err));
+};
+
+//Submitting Farmer farm details
+const submitFarmerForm = () => {
+  const form = document.getElementById('farmer-form');
+  const formData = new FormData(form);
+
+  //Add the default query parameter
+  formData.append('user_type', 'Farmer');
+
+  fetch('/api/v1/register', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.status === 'success') {
+        window.location.href = 'pages/login.html';
+      }
+    })
+    .catch((err) => console.log(err));
+};

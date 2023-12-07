@@ -137,7 +137,7 @@ header {
   position: relative;
   left: 735px;
   width: 400px;
-  bottom: 52px;
+  bottom: 35px;
   height: 60px;
   border-radius: 32px;
   display: flex;
@@ -167,13 +167,18 @@ input:focus {
   outline: none;
 }
 
-.product-categories {
-  background-color: var(--categories-background);
+.main-products-container {
+  display: flex;
+}
+
+/* .product-categories {
+  margin-top: 20px;
+  background-color: #dad7cd8c;
   right: 115px;
   border-radius: 10px;
   line-height: 2.5;
   height: 250px;
-}
+} */
 
 .product-categories h3 {
   color: white;
@@ -207,48 +212,129 @@ li a:hover {
   color: var(--call-to-action);
 }
 
-.col-8 {
-  display: flex;
-  flex-wrap: wrap;
+/* PRODUCT CARDS STYLES */
+.product-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
 }
 
-.card {
-  margin-left: 8px;
-  background-color: var(--card-background);
-  margin-bottom: 8px;
-  overflow: hidden;
+.product-card {
+  width: 265px;
+  height: 366px;
+  background-color: #0000009c;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.product-card-img img {
+  width: 265px;
+  height: 175px;
+  object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.product-card-text .category {
+  color: grey;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-top: 4px;
+  padding-left: 8px;
+}
+
+.product-card-text h4 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.product-card-text .price {
+  color: #a3b18a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  padding-left: 8px;
+}
+
+.farmer-location {
+  display: flex;
   height: fit-content;
 }
 
-.card img {
-  width: 100%;
-  height: auto;
-  display: block;
+.farmer-location img {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
 }
-
-.card-body {
-  padding: 12px;
-}
-
-.card-body h4 {
-  font-family: var(--Header-font);
+.farmer-location p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
   color: white;
-  margin-top: -16px;
+  margin-top: 2px;
+  margin-left: 6px;
 }
 
-.price {
-  font-family: var(--font);
-  color: black;
+.farmer-location .location {
+  color: rgba(107, 187, 174, 0.63);
+}
+
+.farmer-location .farmer {
+  font-size: 12px;
+
+  font-style: normal;
+  color: white;
+  padding-left: 16px;
+}
+
+button.contact-farmer {
+  width: 75px;
+  height: 35px;
+  background: rgba(240, 196, 0, 0.96);
+  border-radius: 20px;
+  margin-left: 8px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+button.contact-farmer:hover {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: #215733;
 }
 
 .more-details {
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
-  margin-left: 4px;
+  margin-left: 40px;
+  color: var(--call-to-action);
 }
 
 .more-details:hover {
-  color: var(--call-to-action);
+  text-decoration: underline;
 }
 
 .card-product-category {
@@ -272,9 +358,10 @@ li a:hover {
 
 .add-to-list {
   background-color: var(--alt-background-color);
-  border-radius: 32px;
+  border-radius: 28px;
+  margin-left: 8px;
   width: 100px;
-  height: 40px;
+  height: 35px;
   color: white;
   font-family: var(--font);
 }
@@ -301,6 +388,7 @@ li a:hover {
   height: 600px;
   width: 573px;
   padding: 12px;
+  object-fit: cover;
   margin-left: -8px;
 }
 
@@ -428,7 +516,7 @@ li a:hover {
 
 .display-post-product-modal:hover {
   transform: scale(1.1);
-  transition: 0.3s ease;
+  transition: 0.2s ease;
 }
 
 .add-sign:hover {
@@ -438,10 +526,15 @@ li a:hover {
 
 /* FOOOTER STYELS */
 
+footer {
+  background-color: #2157336e;
+}
+
 .footer-flex-container {
   display: flex;
   justify-content: space-between;
   width: 80%;
+  padding: 24px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -527,17 +620,6 @@ li a:hover {
   text-align: center;
 }
 
-.end-of-page-line {
-  width: 100%;
-  height: 16px;
-  margin-top: 100px;
-  background: linear-gradient(
-    106deg,
-    rgba(88, 129, 87, 0.63) 29.3%,
-    rgba(107, 187, 174, 0.63) 67.38%
-  );
-}
-
 .copyright {
   color: rgba(0, 0, 0, 0.5);
   font-family: Inter;
@@ -547,4 +629,6 @@ li a:hover {
   line-height: normal;
   text-align: center;
   margin-left: 250px;
+  margin-bottom: 0;
+  padding-bottom: 24px;
 }

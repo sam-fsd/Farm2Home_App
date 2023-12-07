@@ -99,7 +99,7 @@
 .post-product-modal {
   width: 890px;
   height: fit-content;
-  background: #a3b18a;
+  background: rgba(163, 177, 138);
   margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
