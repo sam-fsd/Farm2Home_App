@@ -163,7 +163,7 @@ form .txt_field {
   width: 100%;
 }
 
-input[type='submit'] {
+.submit-form {
   width: 305px;
   height: 54px;
   margin-left: 90px;

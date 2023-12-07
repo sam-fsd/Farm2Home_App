@@ -11,6 +11,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="static/styles/home.css" />
+    <link rel="stylesheet" href="static/styles/post_product.css" />
+    <script src="static/scripts/index.js" defer></script>
 
     <script
       src="https://kit.fontawesome.com/ad9f8dd4b9.js"
@@ -19,31 +21,22 @@
   </head>
   <body>
     <header class="container">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#"
-          ><img src="static/assets/images/farm2homelogo.jpg" alt=""
-        /></a>
-
-        <div
-          class="collapse navbar-collapse justify-content-center"
-          id="navbarNavAltMarkup"
+      <div class="logo"></div>
+      <div class="menu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="">Our Farmers</a></li>
+          <li><a href="">Categories</a></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="login-signup">
+        <a href="pages/login.html"><button class="login-btn">Login</button></a>
+        <a href="static/pages/signup.html"
+          ><button class="signup-btn">Sign Up</button></a
         >
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Home </a>
-            <a class="nav-item nav-link" href="#">Farmers</a>
-            <a class="nav-item nav-link" href="#">About Us</a>
-            <a class="nav-item nav-link" href="#">Contact Us</a>
-          </div>
-          <div class="auth-btns">
-            <a class="nav-item nav-link" href="static/pages/login.html"
-              ><button class="auth-btn login-btn">Login</button></a
-            >
-            <a class="nav-item nav-link" href="static/pages/signup.html"
-              ><button class="auth-btn signup-btn">Signup</button></a
-            >
-          </div>
-        </div>
-      </nav>
+      </div>
     </header>
     <section>
       <div class="image-container container">
@@ -59,169 +52,402 @@
           Search
         </button>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-3 product-categories">
-            <h3>Categories</h3>
-            <ul>
-              <li>
-                <a href="">
-                  <img
-                    class="icons"
-                    src="static/assets/icons/icons8-vegetables-64 (1).png"
-                    alt=""
-                  />Vegatables</a
-                >
-              </li>
-              <li>
-                <a href=""
-                  ><img
-                    class="icons"
-                    src="static/assets/icons/icons8-dairy-64.png"
-                    alt=""
-                  />Dairy
-                </a>
-              </li>
-              <li>
-                <a href=""
-                  ><img
-                    class="icons"
-                    src="static/assets/icons/icons8-seeds-24.png"
-                    alt=""
-                  />Seeds</a
-                >
-              </li>
-              <li>
-                <a href="">
-                  <img
-                    class="icons"
-                    src="static/assets/icons/icons8-animal-feed-64.png"
-                    alt=""
-                  />Animal Feed</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-8">
-            <div class="card" style="width: 14rem">
-              <img
-                src="static/assets/images/onions.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
 
-                <h4>Well preserved seeds for sale</h4>
-                <p class="price"><strong>Kshs. 1000 per gunia</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
-                >
-              </div>
-            </div>
-            <div class="card" style="width: 14rem">
+      <div class="main-products-container container">
+        <!-- <div class="product-categories">
+          <h3>Categories</h3>
+          <ul>
+            <li>
+              <a href="">
+                <img
+                  class="icons"
+                  src="static/assets/icons/icons8-vegetables-64 (1).png"
+                  alt=""
+                />Vegatables</a
+              >
+            </li>
+            <li>
+              <a href=""
+                ><img
+                  class="icons"
+                  src="static/assets/icons/icons8-dairy-64.png"
+                  alt=""
+                />Dairy
+              </a>
+            </li>
+            <li>
+              <a href=""
+                ><img
+                  class="icons"
+                  src="static/assets/icons/icons8-seeds-24.png"
+                  alt=""
+                />Seeds</a
+              >
+            </li>
+            <li>
+              <a href="">
+                <img
+                  class="icons"
+                  src="static/assets/icons/icons8-animal-feed-64.png"
+                  alt=""
+                />Animal Feed</a
+              >
+            </li>
+          </ul>
+        </div> -->
+        <div class="product-card-grid container">
+          <div class="product-card card-one">
+            <div class="product-card-img">
               <img
-                src="static/assets/images/onions.jpg"
-                class="card-img-top"
-                alt="..."
+                src="static/assets/images/stijn-te-strake-UdhpcfImQ9Y-unsplash.jpg"
+                alt=""
               />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
-                <h4>Onions For Sale</h4>
-                <p class="price"><strong>Kshs. 250 per Kg</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
-                >
-              </div>
             </div>
-            <div class="card" style="width: 14rem">
-              <img
-                src="static/assets/images/arnaldo-aldana-HfH5yd70ox8-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
-                <h4>Cabbages for @ Affordable price</h4>
-                <p class="price"><strong>Kshs. 10 per Cabbage</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
-                >
+            <div class="product-card-text">
+              <p class="category">Animals</p>
+              <h4>Organic fed diary cows for sale</h4>
+              <p class="price">Price: Kshs. 100K per Cow</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Kiambu</p>
               </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
             </div>
-            <div class="card" style="width: 14rem">
+          </div>
+          <div class="product-card card-two">
+            <div class="product-card-img">
               <img
-                src="static/assets/images/onions.jpg"
-                class="card-img-top"
-                alt="..."
+              src="static/assets/images/arnaldo-aldana-HfH5yd70ox8-unsplash.jpg""
               />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
-                <h4>Well preserved seeds for sale</h4>
-                <p class="price"><strong>Kshs. 1000 per gunia</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
-                >
+            </div>
+            <div class="product-card-text">
+              <p class="category">Vegetables</p>
+              <h4>Fresh Cabbages @ Affordable Price</h4>
+              <p class="price">Price: Kshs. 50 per Cabbage</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Murang'a</p>
               </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
             </div>
-            <div class="card" style="width: 14rem">
-              <img
-                src="static/assets/images/onions.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
-                <h4>Onions For Sale</h4>
-                <p class="price"><strong>Kshs. 250 per Kg</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
-                >
+          </div>
+          <div class="product-card card-three">
+            <div class="product-card-img">
+              <img src="static/assets/images/seeds-jumbotron.jpg" alt="" />
+            </div>
+            <div class="product-card-text">
+              <p class="category">Seeds</p>
+              <h4>
+                Fresh, high-quality seeds available for your next bountiful
+                yield.
+              </h4>
+              <p class="price">Price: 150 Kshs per packet</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Rift-Valley</p>
               </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
             </div>
-            <div class="card" style="width: 14rem">
+          </div>
+          <div class="product-card card-card-four">
+            <div class="product-card-img">
+              <img src="static/assets/images/onions.jpg" alt="" />
+            </div>
+            <div class="product-card-text">
+              <p class="category">Animal Feeds</p>
+              <h4>
+                Elevate your livestock's nutrition with top-notch hay for sale.
+                🌿
+              </h4>
+              <p class="price">Price: 300 Kshs per bale</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Uasin Gishu</p>
+              </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
+            </div>
+          </div>
+          <div class="product-card card-one">
+            <div class="product-card-img">
               <img
-                src="static/assets/images/arnaldo-aldana-HfH5yd70ox8-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
+                src="static/assets/images/stijn-te-strake-UdhpcfImQ9Y-unsplash.jpg"
+                alt=""
               />
-              <div class="card-body">
-                <div class="card-product-category">
-                  <img src="static/assets/icons/icons8-tag-50.png" alt="" />
-                  <p>vegetable</p>
-                </div>
-                <h4>Cabbages for @ Affordable price</h4>
-                <p class="price"><strong>Kshs. 10 per Cabbage</strong></p>
-                <button class="add-to-list">Add to List</button>
-                <span
-                  ><a href="#" class="more-details">More details...</a></span
+            </div>
+            <div class="product-card-text">
+              <p class="category">Animals</p>
+              <h4>Organic fed diary cows for sale</h4>
+              <p class="price">Price: Kshs. 100K per Cow</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Kiambu</p>
+              </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
+            </div>
+          </div>
+          <div class="product-card card-two">
+            <div class="product-card-img">
+              <img
+              src="static/assets/images/arnaldo-aldana-HfH5yd70ox8-unsplash.jpg""
+              />
+            </div>
+            <div class="product-card-text">
+              <p class="category">Vegetables</p>
+              <h4>Fresh Cabbages @ Affordable Price</h4>
+              <p class="price">Price: Kshs. 50 per Cabbage</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Murang'a</p>
+              </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
+            </div>
+          </div>
+          <div class="product-card card-three">
+            <div class="product-card-img">
+              <img src="static/assets/images/seeds-jumbotron.jpg" alt="" />
+            </div>
+            <div class="product-card-text">
+              <p class="category">Seeds</p>
+              <h4>
+                Fresh, high-quality seeds available for your next bountiful
+                yield.
+              </h4>
+              <p class="price">Price: 150 Kshs per packet</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Rift-Valley</p>
+              </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
+            </div>
+          </div>
+          <div class="product-card card-card-four">
+            <div class="product-card-img">
+              <img src="static/assets/images/onions.jpg" alt="" />
+            </div>
+            <div class="product-card-text">
+              <p class="category">Animal Feeds</p>
+              <h4>
+                Elevate your livestock's nutrition with top-notch hay for sale.
+                🌿
+              </h4>
+              <p class="price">Price: 300 Kshs per bale</p>
+              <div class="farmer-location">
+                <img
+                  src="static/assets/icons/icons8-location-50 (1).png"
+                  alt=""
+                />
+                <p class="location">Uasin Gishu</p>
+              </div>
+              <a href="static/pages/signup.html"
+                ><button class="add-to-list">Add to list</button></a
+              >
+              <a href="#" class="more-details">more details</a>
+            </div>
+          </div>
+        </div>
+        <div class="post-product-modal">
+          <div class="row">
+            <div class="col">
+              <div class="upload-image-container">
+                <img class="imagePreview" src="" alt="" />
+                <img
+                  class="upload-image-icon"
+                  src="static/assets/icons/icons8-upload-image-48.png"
+                  alt=""
+                />
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="imageInput"
+                  for="post-product-details"
+                  onchange="previewImage(event)"
+                />
+                <label class="upload-btn" for="imageInput">Upload Image</label>
+              </div>
+              <button id="remove-image-btn" onclick="removeImage()">
+                Remove Image
+              </button>
+            </div>
+            <div class="col">
+              <div class="form_product_details">
+                <form
+                  action=""
+                  method="post"
+                  id="post-product-details "
+                  enctype="multipart/form-data"
                 >
+                  <div class="txt_field">
+                    <label>Product Name</label>
+                    <input type="text" required />
+                    <span></span>
+                  </div>
+                  <div class="txt_field">
+                    <label>Caption</label>
+                    <input type="text" required />
+                  </div>
+                  <p style="font-size: x-small; height: fit-content">
+                    <em>Make your caption brief and catchy</em>
+                  </p>
+                  <div class="txt_field">
+                    <label for="descpription">Description</label>
+                    <textarea
+                      name=""
+                      id="descpription"
+                      cols="30"
+                      rows="2"
+                    ></textarea>
+                  </div>
+                  <p style="font-size: x-small; height: fit-content">
+                    <em
+                      >Provide more details about the product eg. Is it
+                      organic?</em
+                    >
+                  </p>
+                  <div class="txt_field">
+                    <label>Location</label>
+                    <input type="text" required />
+                  </div>
+                  <div class="txt_field">
+                    <label>Price</label>
+                    <input type="password" required />
+                  </div>
+                  <div class="txt_field">
+                    <label>Category</label>
+                    <select name="categories" id="product_category">
+                      <option value="vegetables">Vegetables</option>
+                      <option value="dairy">Dairy</option>
+                      <option value="seeds">Seeds</option>
+                      <option value="animal-feed">Animal Feed</option>
+                    </select>
+                  </div>
+                  <input type="submit" class="post_btn" value="Post" />
+                  <span class="cancel-btn">Cancel</span>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="product-more-details container">
+        <div class="row">
+          <div class="col product-image">
+            <img src="static/assets/images/onions.jpg" alt="" />
+          </div>
+          <div class="col details">
+            <h1>Great Seeds To bring Good Crops</h1>
+            <div class="product-description">
+              <h3>descpription</h3>
+              <p class="product-blog">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                vel obcaecati nostrum earum itaque a, accusamus iure veniam odio
+                quae, in aliquid maxime voluptatem. Asperiores mollitia neque
+                repellat, quos nulla corrupti dolores sed exercitationem alias
+                maxime debitis veniam dolorem harum cupiditate fuga! Labore quam
+                maxime laudantium a! Repellat, animi officiis!
+              </p>
+              <div class="product-price">
+                <img src="static/assets/icons/icons8-money-32.png" alt="" />
+                <p>Kshs. 2000 Per Kg</p>
+              </div>
+              <div class="card-product-category">
+                <img
+                  id="category-icon"
+                  src="static/assets/icons/icons8-tag-50.png"
+                />
+                <p class="product-category">
+                  <strong>Category:</strong> vegetable
+                </p>
+              </div>
+              <button class="modal-add-to-list">Add To List</button>
+              <button class="modal-show-contact">Show Contact</button>
+            </div>
+          </div>
+        </div>
+        <button>
+          <img
+            class="cancel-product-modal"
+            src="static/assets/icons/icons8-cancel-51.png"
+            class="cancel-icon"
+          />
+        </button>
+      </div>
+      <button class="display-post-product-modal" title="Post a product">
+        <span class="add-sign">+</span>
+      </button>
     </section>
+    <footer>
+      <div class="footer-flex-container container">
+        <div class="logo"></div>
+        <div class="about-summary">
+          <h4>About Farm2Home</h4>
+          <p>
+            Connecting farmers with customers for fresh, local produce. Join our
+            community and support sustainable agriculture.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-contactUs">
+          <h4>Contact Us</h4>
+          <p>
+            Email: info@farm2home.com <br />
+            Phone: +123-456-7890
+          </p>
+        </div>
+      </div>
+      <p class="copyright">© 2023 Farm2Home. All rights reserved.</p>
+    </footer>
+    <div id="overlay"></div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

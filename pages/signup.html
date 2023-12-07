@@ -9,19 +9,19 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../styles/signup.css" />
-    <script src="../scripts/index.js" defer></script>
+    <link rel="stylesheet" href="../static/styles/signup.css" />
+    <script src="../static/scripts/index.js" defer></script>
     <title>Welcome! Sign Up</title>
   </head>
   <body>
     <header class="container">
       <nav class="navbar">
-        <img src="../assets/images/logo.jpeg" alt="" />
+        <img src="../static/assets/images/logo.jpeg" alt="" />
         <p class="navbar-link"><a href="#">Contact Us</a></p>
       </nav>
     </header>
     <p class="container back-link">
-      <a href="../../home.html">
+      <a href="../home.html">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -40,7 +40,7 @@
     <section class="main-section container">
       <div class="signup-modal">
         <div class="modal-title">
-          <img src="../assets/images/logo.jpeg" alt="Farm2Home Logo" />
+          <img src="../static/assets/images/logo.jpeg" alt="Farm2Home Logo" />
 
           <h1>Sign Up</h1>
           <p>Create an account</p>
@@ -53,7 +53,12 @@
         </div>
         <div class="form_content">
           <div class="form_customer form active">
-            <form action="" method="post">
+            <form
+              id="customer-form"
+              action=""
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+            >
               <div class="txt_field">
                 <input type="text" required />
                 <span></span>
@@ -74,14 +79,26 @@
                 <span></span>
                 <label>Confirm Password</label>
               </div>
-              <input type="submit" value="Register" />
+              <button
+                type="button"
+                class="submit-form"
+                value="Register"
+                onclick="submitCustomerForm()"
+              >
+                Register
+              </button>
             </form>
             <p class="login_link">
               Already have an account? <a href="login.html">Login</a>
             </p>
           </div>
           <div class="form_farmer form">
-            <form action="" method="post">
+            <form
+              id="farmer-form"
+              action=""
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+            >
               <div class="txt_field">
                 <input type="text" required />
                 <span></span>
@@ -112,7 +129,14 @@
                 <span></span>
                 <label>Confirm Password</label>
               </div>
-              <input type="submit" value="Register" />
+              <button
+                type="button"
+                class="submit-form"
+                value="Register"
+                onclick="submitFarmerForm()"
+              >
+                Register
+              </button>
             </form>
             <p class="login_link">
               Already have an account? <a href="login.html">Login</a>
