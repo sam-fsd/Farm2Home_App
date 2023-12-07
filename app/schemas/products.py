@@ -3,7 +3,7 @@
 from pydantic import BaseModel
 from typing import Optional, List
 from datetime import datetime
-
+import uuid
 
 class ProductCreate(BaseModel):
     product_name: str
@@ -16,6 +16,9 @@ class ProductCreate(BaseModel):
 
 
 class ProductList(ProductCreate):
-    # product_id: str
+    product_id: uuid.UUID
     created_at: datetime
     farmer_id: str
+
+    class Config:
+        from_attributes = True
