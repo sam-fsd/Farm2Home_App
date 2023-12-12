@@ -27,9 +27,17 @@ def index():
     return FileResponse("index.html")
 
 
-@app.get("/home")
+@app.get("/home.html")
 def home():
     return FileResponse("home.html")
+
+# @app.get("/about.html")
+# def about():
+#     return FileResponse("about.html")
+
+# @app.get("/contact.html")
+# def contact():
+#     return FileResponse("contact.html")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,6 @@ from app.schemas.products import ProductList, ProductCreate
 from app.oauth2 import get_current_user
 from sqlalchemy.exc import IntegrityError
 
-
 router = APIRouter(
     prefix = '/api/v1/products',
     tags = ['Products']
@@ -40,7 +39,13 @@ def create_product(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/", response_model=List[ProductList])
-def get_products(db: Session = Depends(get_db),
-                 current_user: dict = Depends(get_current_user)):
+def get_products(db: Session = Depends(get_db)):
     products = db.query(ProductModel).all()
+    return products
+
+@router.get("/search/{product_name}", response_model=List[ProductList])
+def search_product(product_name: str, db: Session = Depends(get_db)):
+    products = db.query(ProductModel).filter(ProductModel.product_name.ilike(f'%{product_name}%')).all()
+    if not products:
+        raise HTTPException(status_code=404, detail="Product not found")
     return products
