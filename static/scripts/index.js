@@ -207,31 +207,96 @@ $(document).ready(function () {
     }
   };
 
-  window.submitForm = function (userType) {
+  window.submitRegisterForm = function (userType) {
     const formId = userType === 'customer' ? '#customer-form' : '#farmer-form';
     const form = $(formId)[0];
+
+    //Validate form has not empty fields
+    const inputs = form.querySelectorAll('input');
+    let isFormValid = true;
+    inputs.forEach((input) => {
+      if (!input.value) {
+        $(input).addClass('error');
+        isFormValid = false;
+      } else {
+        $(input).removeClass('error');
+      }
+    });
+
+    if (!isFormValid) {
+      return;
+    }
+
+    //validate password and confirm password
+    let password = '';
+    let confirmPassword = '';
+
+    if (formId === '#customer-form') {
+      password = form.querySelector('#buyerPassword').value;
+      confirmPassword = form.querySelector('#buyerConfirmPassword').value;
+      if (password !== confirmPassword) {
+        $('#customer-form .password-error').css('display', 'block');
+        return;
+      } else {
+        $('#customer-form .password-error').css('display', 'none');
+      }
+    } else {
+      password = form.querySelector('#password').value;
+      confirmPassword = form.querySelector('#confirmPassword').value;
+      if (password !== confirmPassword) {
+        $('#farmer-form .password-error').css('display', 'block');
+        return;
+      } else {
+        $('#farmer-form .password-error').css('display', 'none');
+      }
+    }
+
     const formData = new FormData(form);
-    formData.append('user_type', userType);
 
-    fetch('/api/v1/auth/register', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.status === 'success') {
-          window.location.href = 'pages/login.html';
-        }
-      })
-      .catch((err) => console.log(err));
+    //Create a plain JS object from the formData object
+    const jsonData = {};
+    for (const [key, value] of formData.entries()) {
+      jsonData[key] = value;
+    }
+
+    const jsonstring = JSON.stringify(jsonData);
+
+    //   fetch(`/api/v1/auth/register?user_type=${userType}`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: jsonstring,
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.status === 'success') {
+    //         console.log(data.status);
+    //         console.log(data);
+    //         window.location.href = 'pages/login.html';
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+    // };
+
+    // $('#submit-customer-form').on('click', function () {
+    //   submitForm('customer');
+    // });
+
+    // $('#submit-farmer-form').on('click', function () {
+    //   submitForm('farmer');
+
+    $.ajax({
+      url: `/api/v1/auth/register?user_type=${userType}`,
+      type: 'POST',
+      contentType: 'application/json',
+      data: jsonstring,
+      success: (data) => {
+        window.location.href = 'pages/login.html';
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   };
-
-  $('#submit-customer-form').on('click', function () {
-    submitForm('customer');
-  });
-
-  $('#submit-farmer-form').on('click', function () {
-    submitForm('farmer');
-  });
 });

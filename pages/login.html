@@ -20,7 +20,7 @@
       </nav>
     </header>
     <p class="container back-link">
-      <a href="../home.html">
+      <a href="/home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -42,24 +42,22 @@
           <img src="../static/assets/images/logo.jpeg" alt="Farm2Home Logo" />
           <h1>Login</h1>
           <p>Sign in to your account</p>
-          <form action="" method="post">
+          <form method="post" id="loginForm">
             <div class="txt_field">
-              <input type="text" required />
+              <input type="text" id="email" name="email" required />
               <span></span>
-              <label>Email</label>
+              <label for="email">Email</label>
             </div>
             <div class="txt_field">
-              <input type="password" required />
+              <input type="password" id="password" name="password" required />
               <span></span>
-              <label>Password</label>
+              <label for="password">Password</label>
             </div>
             <div class="pass">Forgot Password?</div>
             <input type="submit" value="Login" />
             <p class="signup_link">Not a member?</p>
           </form>
-          <a href="signup.html"
-            ><button class="register-btn">Register</button></a
-          >
+          <a href="/register"><button class="register-btn">Register</button></a>
         </div>
       </div>
     </section>

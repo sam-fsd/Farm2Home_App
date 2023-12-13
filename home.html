@@ -17,25 +17,6 @@
   </head>
   <body>
     <header class="container">
-      <!-- <div class="logo"></div>
-      <div class="menu">
-        <ul>
-          <li class="item"><a href="/home">Home</a></li>
-          <li class="item"><a href="">Our Farmers</a></li>
-          <li class="item"><a href="">Categories</a></li>
-          <li class="item"><a href="">About Us</a></li>
-          <li class="item"><a href="">Contact Us</a></li>
-          <li class="toggle">
-            <span class="bars"></span>
-          </li>
-        </ul>
-      </div>
-      <div class="login-signup item">
-        <a href="pages/login.html"><button class="login-btn">Login</button></a>
-        <a href="static/pages/signup.html"
-          ><button class="signup-btn">Sign Up</button></a
-        >
-      </div> -->
       <nav>
         <ul class="menu">
           <li>
@@ -43,13 +24,13 @@
               ><img class="logo" src="static/assets/images/logo.jpeg" alt=""
             /></a>
           </li>
-          <li class="item"><a href="#">Home</a></li>
+          <li class="item"><a href="/home">Home</a></li>
           <li class="item"><a href="#">Catgeories</a></li>
           <li class="item"><a href="#">Our Farmers</a></li>
           <li class="item"><a href="#">About us</a></li>
           <li class="item"><a href="#">Contact Us</a></li>
-          <li class="item button"><a href="#">Login</a></li>
-          <li class="item button secondary"><a href="#">Sign Up</a></li>
+          <li class="item button"><a href="/login">Login</a></li>
+          <li class="item button secondary"><a href="/register">Sign Up</a></li>
           <li class="toggle">
             <span class="bars"></span>
           </li>
@@ -312,12 +293,17 @@
                   >
                     <div class="txt_field">
                       <label for="product-name">Product Name</label>
-                      <input type="text" id="product-name" required />
+                      <input
+                        type="text"
+                        id="product-name"
+                        name="product_name"
+                        required
+                      />
                       <span></span>
                     </div>
                     <div class="txt_field">
                       <label for="caption">Caption</label>
-                      <input type="text" id="caption" required />
+                      <input type="text" id="caption" name="caption" required />
                     </div>
                     <p style="font-size: x-small; height: fit-content">
                       <em>Make your caption brief and catchy</em>
@@ -325,10 +311,11 @@
                     <div class="txt_field">
                       <label for="descpription">Description</label>
                       <textarea
-                        name=""
+                        name="descpription"
                         id="descpription"
                         cols="30"
                         rows="2"
+                        required
                       ></textarea>
                     </div>
                     <p style="font-size: x-small; height: fit-content">
@@ -339,15 +326,25 @@
                     </p>
                     <div class="txt_field">
                       <label for="location">Location</label>
-                      <input type="text" id="location" required />
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        required
+                      />
                     </div>
                     <div class="txt_field">
-                      <label for="password">Price</label>
-                      <input type="password" id="password" required />
+                      <label for="productPrice">Price</label>
+                      <input
+                        type="text"
+                        id="productPrice"
+                        name="price"
+                        required
+                      />
                     </div>
                     <div class="txt_field">
                       <label for="product_category">Category</label>
-                      <select name="categories" id="product_category">
+                      <select name="category" id="product_category">
                         <option value="vegetables">Vegetables</option>
                         <option value="dairy">Dairy</option>
                         <option value="seeds">Seeds</option>
@@ -402,13 +399,15 @@
                 <div class="product-description">
                   <h3>descpription</h3>
                   <p class="product-blog">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolore vel obcaecati nostrum earum itaque a, accusamus iure
-                    veniam odio quae, in aliquid maxime voluptatem. Asperiores
-                    mollitia neque repellat, quos nulla corrupti dolores sed
-                    exercitationem alias maxime debitis veniam dolorem harum
-                    cupiditate fuga! Labore quam maxime laudantium a! Repellat,
-                    animi officiis!
+                    Experience agricultural excellence with our premium seeds
+                    carefully cultivated by seasoned farmers. Our meticulously
+                    selected seeds promise robust growth, high yield, and
+                    exceptional quality. Packed with the expertise of
+                    generations, each seed is a testament to our commitment to
+                    fostering sustainable and thriving harvests. Choose our
+                    seeds, and embark on a journey of bountiful and flourishing
+                    crops. Elevate your farming experience with seeds that sow
+                    success.
                   </p>
                   <div class="product-price">
                     <img src="static/assets/icons/icons8-money-32.png" alt="" />

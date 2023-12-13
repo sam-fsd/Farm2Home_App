@@ -10,6 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../static/styles/signup.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../static/scripts/index.js" defer></script>
     <title>Welcome! Sign Up</title>
   </head>
@@ -21,7 +22,7 @@
       </nav>
     </header>
     <p class="container back-link">
-      <a href="../home.html">
+      <a href="/home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -60,36 +61,43 @@
               enctype="application/x-www-form-urlencoded"
             >
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="buyerFullName" name="name" required />
                 <span></span>
-                <label>Full name</label>
+                <label for="buyerFullName">Full name</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="buyerEmail" name="email" required />
                 <span></span>
-                <label>Email</label>
+                <label for="buyerEmail">Email</label>
               </div>
               <div class="txt_field">
-                <input type="password" required />
+                <input
+                  type="password"
+                  id="buyerPassword"
+                  name="password"
+                  required
+                />
                 <span></span>
-                <label>Password</label>
+                <label for="buyerPassword">Password</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="password" id="buyerConfirmPassword" required />
                 <span></span>
-                <label>Confirm Password</label>
+                <label for="buyerConfirmPassword">Confirm Password</label>
               </div>
+              <p class="password-error">Password does not match!</p>
+
               <button
                 type="button"
                 class="submit-form"
                 value="Register"
-                onclick="submitCustomerForm()"
+                onclick="submitRegisterForm('customer')"
               >
                 Register
               </button>
             </form>
             <p class="login_link">
-              Already have an account? <a href="login.html">Login</a>
+              Already have an account? <a href="/login">Login</a>
             </p>
           </div>
           <div class="form_farmer form">
@@ -100,46 +108,47 @@
               enctype="application/x-www-form-urlencoded"
             >
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="fullName" name="name" required />
                 <span></span>
-                <label>Full name</label>
+                <label for="fullName">Full name</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="email" name="email" required />
                 <span></span>
-                <label>Email</label>
+                <label for="email">Email</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="phoneNumber" name="phone" required />
                 <span></span>
-                <label>Phone</label>
+                <label for="phoneNumber">Phone</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="text" id="location" name="location" required />
                 <span></span>
-                <label>Location</label>
+                <label for="location">Location</label>
               </div>
               <div class="txt_field">
-                <input type="password" required />
+                <input type="password" id="password" name="password" required />
                 <span></span>
-                <label>Password</label>
+                <label for="password">Password</label>
               </div>
               <div class="txt_field">
-                <input type="text" required />
+                <input type="password" id="confirmPassword" required />
                 <span></span>
-                <label>Confirm Password</label>
+                <label for="confirmPassword">Confirm Password</label>
               </div>
+              <p class="password-error">Password does not match!</p>
               <button
                 type="button"
                 class="submit-form"
                 value="Register"
-                onclick="submitFarmerForm()"
+                onclick="submitRegisterForm('farmer')"
               >
                 Register
               </button>
             </form>
             <p class="login_link">
-              Already have an account? <a href="login.html">Login</a>
+              Already have an account? <a href="/login">Login</a>
             </p>
           </div>
         </div>
