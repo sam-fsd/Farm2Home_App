@@ -169,10 +169,10 @@ nav {
   position: absolute;
   /* right: 50%; */
 
-  left: 15%;
-  width: 300px;
-  bottom: -30px;
-  height: 55px;
+  left: 18%;
+  width: 250px;
+  bottom: -20px;
+  height: 45px;
   border-radius: 28px;
   display: flex;
   align-items: center;
@@ -852,7 +852,7 @@ footer {
 
   .search-product-bar {
     width: 400px;
-    left: 25%;
+    left: 28%;
   }
   .image-container {
     width: 100%;
@@ -878,7 +878,7 @@ footer {
   }
 
   .item a {
-    font-size: 12.5px;
+    font-size: 16px;
   }
 
   .button {
@@ -907,6 +907,14 @@ footer {
 }
 
 @media all and (min-width: 1200px) {
+  .menu {
+    justify-content: end;
+    padding-left: 0;
+  }
+  .menu li a {
+    font-size: 16px;
+  }
+
   .product-card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -945,5 +953,9 @@ footer {
 
   .product-card {
     margin: 30px auto;
+  }
+
+  .search-product-bar {
+    left: 35%;
   }
 }
