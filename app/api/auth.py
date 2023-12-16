@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """authenticates users"""
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app.models.database import get_db
@@ -48,6 +48,7 @@ def register(user: Union[FarmerCreate, CustomerCreate],
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     
     user = db.query(FarmerModel).filter(FarmerModel.email == form_data.username).first()
+    print("user:", user)
 
     if not user:
         user = db.query(CustomerModel).filter(CustomerModel.email == form_data.username).first()

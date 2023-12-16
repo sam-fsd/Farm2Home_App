@@ -25,7 +25,7 @@ class CustomerCreate(BaseModel):
     name: str
     email: str
     password: str
-    location: str
+    location: str  # Lets get customer location to allow matching with farmers
 
 
 class UserLogin(BaseModel):
