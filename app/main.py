@@ -31,6 +31,18 @@ def index():
 def home():
     return FileResponse("home.html")
 
+@app.get("/login")
+def login():
+    return FileResponse("../pages/login.html")
+
+# @app.get("/about.html")
+# def about():
+#     return FileResponse("about.html")
+
+# @app.get("/contact.html")
+# def contact():
+#     return FileResponse("contact.html")
+
 
 if __name__ == "__main__":
     app.run(app, host="127.0.0.1", port=8000)
