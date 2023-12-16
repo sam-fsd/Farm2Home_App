@@ -11,6 +11,8 @@ from typing import Union
 from app.oauth2 import create_access_token
 from app.config import settings
 from jose import JWTError
+from fastapi import HTTPException
+from fastapi.responses import RedirectResponse
 
 
 router = APIRouter(
@@ -41,7 +43,9 @@ def register(user: Union[FarmerCreate, CustomerCreate],
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return db_user
+    print(db_user)
+    # Redirect to the login page
+    return RedirectResponse(url="../../pages/login.html")
 
 
 @router.post('/token')
