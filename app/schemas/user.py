@@ -6,6 +6,9 @@ from datetime import datetime
 
 
 class UserBase(BaseModel):
+    """
+    Represents the base schema for a user.
+    """
     name: str
     email: EmailStr
     password: str
@@ -14,14 +17,24 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
+    """
+    Represents a schema for creating a user.
+    """
+
     pass
 
 
 class FarmerCreate(UserCreate):
+    """
+    Represents a schema for creating a farmer user.
+    """
     bio: str
 
 
 class CustomerCreate(BaseModel):
+    """
+    Pydantic model for creating a customer.
+    """
     name: str
     email: str
     password: str
@@ -29,6 +42,8 @@ class CustomerCreate(BaseModel):
 
 
 class UserLogin(BaseModel):
+    """
+    Pydantic model for user login.
+    """
     email: str
     password: str
-

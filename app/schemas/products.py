@@ -6,6 +6,10 @@ from datetime import datetime
 import uuid
 
 class ProductCreate(BaseModel):
+    """
+    A Pydantic model that defines the schema for creating a product.
+    """
+
     product_name: str
     price: float
     quantity: int
@@ -16,6 +20,12 @@ class ProductCreate(BaseModel):
 
 
 class ProductList(ProductCreate):
+    """
+    Represents a product with additional fields for the product ID,
+    creation timestamp, and farmer ID.
+
+    """
+
     product_id: uuid.UUID
     created_at: datetime
     farmer_id: uuid.UUID

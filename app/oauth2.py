@@ -18,6 +18,15 @@ ACCESS_TOKEN_EXPIRE_MINUTES = settings.access_token_expire_minutes
 
 
 def create_access_token(*, data: dict):
+    """
+    Creates an access token by encoding the provided data dictionary.
+
+    Args:
+        data (dict): A dictionary containing the data to be encoded in the access token. It should have the keys "exp" (expiration time in minutes), "sub" (user identifier), and "user_type" (type of user).
+
+    Returns:
+        str: The encoded access token as a string.
+    """
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=to_encode.pop("exp"))
     to_encode.update({"exp": expire})
@@ -26,6 +35,16 @@ def create_access_token(*, data: dict):
 
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+    """
+    Retrieves the current user based on the provided access token.
+
+    Args:
+        token (str): The encoded access token.
+        db (Session): The database session.
+
+    Returns:
+        dict: A dictionary containing the user object and the user type.
+    """
     credentials_exception = HTTPException(
         status_code=401,
         detail="Could not validate credentials",

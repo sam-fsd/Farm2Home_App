@@ -14,6 +14,16 @@ Base = declarative_base()
 
 
 def get_db():
+    """
+    Creates a database session and provides it to the caller.
+
+    Returns:
+        generator: A generator that yields the session object.
+
+    Example Usage:
+        with get_db() as db:
+            # Use the session 'db' to perform database operations
+    """
     db = SessionLocal()
     try:
         yield db
