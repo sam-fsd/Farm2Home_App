@@ -23,7 +23,8 @@
 
 .navbar-link a {
   text-decoration: none;
-  margin-right: 100px;
+  margin-right: 0;
+  margin-left: 100px;
   font: 'Roboto', sans-serif;
 }
 
@@ -44,7 +45,7 @@
 }
 
 .login-modal {
-  width: 490px;
+  min-width: 390;
   height: 605px;
   background: rgba(163, 177, 138, 0.42);
   margin: 0 auto;
@@ -124,6 +125,11 @@ form .txt_field {
 .txt_field input:valid ~ span::before {
   width: 100%;
 }
+
+.txt_field input.error {
+  border-bottom: 2px solid red;
+}
+
 .pass {
   margin: -5px 0 20px 5px;
   color: #6bbbae;
@@ -133,10 +139,16 @@ form .txt_field {
 .pass:hover {
   text-decoration: underline;
 }
-input[type='submit'] {
-  width: 305px;
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginBtn {
+  width: 200px;
   height: 54px;
-  margin-left: 90px;
+  margin: 0 auto;
   border: 1px solid;
   background: #f0c400;
   border-radius: 25px;
@@ -147,18 +159,84 @@ input[type='submit'] {
   outline: none;
 }
 
+#loginBtn:hover {
+  background: #e9f4fb;
+  color: #f0c400;
+  border: 1px solid #f0c400;
+  transition: all 0.2s ease-in-out;
+}
+
+#loginBtn:active {
+  transition: 0.3s;
+  transform: scale(0.93);
+}
+
 .signup_link {
   text-align: center;
   margin-top: 16px;
 }
 
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .register-btn {
-  width: 305px;
+  width: 200px;
   height: 54px;
   flex-shrink: 0;
   font-family: Roboto;
-  margin-left: 90px;
+  margin: 0 auto;
   background-color: white;
   border-radius: 25px;
   color: rgba(0, 0, 0, 0.6);
+}
+
+@media all and (min-width: 468px) {
+  .navbar {
+    width: 100%;
+  }
+  .navbar img {
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+  }
+
+  #loginBtn {
+    width: 305px;
+    height: 54px;
+    border: 1px solid;
+    background: #f0c400;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .register-btn {
+    width: 305px;
+    height: 54px;
+    flex-shrink: 0;
+    font-family: Roboto;
+    background-color: white;
+    border-radius: 25px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .navbar-link a {
+    text-decoration: none;
+    margin-right: 100px;
+    font: 'Roboto', sans-serif;
+  }
+
+  .login-modal {
+    width: 490px;
+    height: 605px;
+    background: rgba(163, 177, 138, 0.42);
+    margin: 0 auto;
+    border-radius: 12px;
+  }
 }

@@ -9,6 +9,8 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../static/scripts/index.js" defer></script>
     <link rel="stylesheet" href="../static/styles/login.css" />
     <title>Login</title>
   </head>
@@ -20,7 +22,7 @@
       </nav>
     </header>
     <p class="container back-link">
-      <a href="../home.html">
+      <a href="/home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -42,24 +44,32 @@
           <img src="../static/assets/images/logo.jpeg" alt="Farm2Home Logo" />
           <h1>Login</h1>
           <p>Sign in to your account</p>
-          <form action="" method="post">
+          <form
+            method="post"
+            id="loginForm"
+            enctype="application/x-www-form-urlencoded"
+          >
             <div class="txt_field">
-              <input type="text" required />
+              <input type="text" id="email" name="username" required />
               <span></span>
-              <label>Email</label>
+              <label for="email">Email</label>
             </div>
             <div class="txt_field">
-              <input type="password" required />
+              <input type="password" id="password" name="password" required />
               <span></span>
-              <label>Password</label>
+              <label for="password">Password</label>
             </div>
             <div class="pass">Forgot Password?</div>
-            <input type="submit" value="Login" />
-            <p class="signup_link">Not a member?</p>
+            <div class="form-footer">
+              <button id="loginBtn" type="button">Login</button>
+              <p class="signup_link">Not a member?</p>
+            </div>
           </form>
-          <a href="signup.html"
-            ><button class="register-btn">Register</button></a
-          >
+          <div class="register">
+            <a href="/register"
+              ><button class="register-btn">Register</button></a
+            >
+          </div>
         </div>
       </div>
     </section>
