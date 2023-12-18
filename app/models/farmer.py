@@ -21,16 +21,33 @@ class Farmer(User, Base):
     products = relationship("Product", back_populates="farmer", foreign_keys="Product.farmer_id" , cascade="all, delete-orphan")
 
     def __init__(self, name="", bio="", location="", email="", password="", phone=""):
+        """
+        Initializes a Farmer object.
 
+        """
         super().__init__(name, email, password, location, phone)
         self.bio = bio
 
     def to_dict(self):
+        """
+        Returns a dictionary representation of the Farmer object.
 
+        Returns:
+            dict: A dictionary containing the farmer's information and products.
+        """
         farmer_dict = super().to_dict()
         farmer_dict['products'] = [product.to_dict() for product in self.products]
         return farmer_dict
-    
+
     def get_products_by_category(self, category):
+        """
+        Returns a list of product dictionaries filtered by the specified category.
+
+        Args:
+            category (str): The category to filter the products by.
+
+        Returns:
+            list: A list of product dictionaries.
+        """
         return [product.to_dict() for product in self.products if product.category == category]
     

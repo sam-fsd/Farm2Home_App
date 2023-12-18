@@ -2,10 +2,10 @@
 """this module defines the routes for the products"""
 from fastapi import HTTPException, Depends, APIRouter
 from typing import List
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from ..models.database import get_db
 from ..models.farmer import Farmer as FarmerModel
-from ..schemas.farmers import Farmer
+from ..schemas.farmers import Farmer, FarmerResponse
 
 
 router = APIRouter(
@@ -16,8 +16,11 @@ router = APIRouter(
 
 @router.get("/", response_model=List[Farmer])
 def get_farmers(db: Session = Depends(get_db)):
-    farmers = db.query(FarmerModel).all()
-    return farmers
+    try:
+        farmers = db.query(FarmerModel).options(joinedload(FarmerModel.products)).all()
+        return farmers
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/{farmer_id}", response_model=Farmer)

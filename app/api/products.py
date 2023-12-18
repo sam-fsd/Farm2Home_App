@@ -14,6 +14,7 @@ router = APIRouter(
     tags = ['Products']
 )
 
+
 @router.post("/", response_model=ProductList)
 def create_product(
     product_name: str = Form(...),
@@ -50,7 +51,7 @@ def create_product(
         return new_product
     except IntegrityError as e:
         db.rollback()
-        raise HTTPException(status_code=400, detail="Duplicate product or other integrity error")
+        raise HTTPException(status_code=400, detail=f"Please join as Farmer. YAY!!! {e}")
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))

@@ -21,6 +21,10 @@ class User():
     phone = Column(String(60), nullable=False)
 
     def __init__(self, name='', email='', password='', location='', phone=''):
+        """
+        Initializes a User instance with the provided attributes.
+
+        """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.name = name
@@ -30,6 +34,18 @@ class User():
         self.phone = phone
 
     def validate_and_set_email(self, email):
+        """
+        Validates the provided email address and sets it as the value of the email attribute.
+
+        Args:
+            email (str): The email address to be validated and set.
+
+        Returns:
+            str: The validated email address.
+
+        Raises:
+            ValueError: If the email is empty or invalid.
+        """
         if not email:
             raise ValueError('Email is required')
         if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
@@ -37,17 +53,49 @@ class User():
         return email
 
     def hash_password(self, password):
+        """
+        Hashes the provided password and sets it as the value of the password attribute.
+
+        Args:
+            password (str): The password to be hashed.
+
+        Returns:
+            str: The hashed password.
+
+        Raises:
+            ValueError: If the password is empty.
+        """
         if not password:
             raise ValueError('Password is required')
         return hashlib.sha256(password.encode()).hexdigest()
-    
+
     def verify_password(self, password):
+        """
+        Verifies if the provided password matches the hashed password stored in the password attribute.
+
+        Args:
+            password (str): The password to be verified.
+
+        Returns:
+            bool: True if the provided password matches the hashed password, False otherwise.
+        """
         return self.password == hashlib.sha256(password.encode()).hexdigest()
 
     def to_dict(self):
-        """This method returns a dictionary representation of a User instance."""
+        """
+        Returns a dictionary representation of the User instance.
+
+        Returns:
+            dict: A dictionary representation of the User instance, excluding any attributes that start with an underscore.
+        """
         user_dict = {key: value for key, value in self.__dict__.items() if not key.startswith('_')}
         return user_dict
 
-    def __repr__(self):  # allows more informative and readable
+    def __repr__(self):
+        """
+        Returns a string representation of the User instance.
+
+        Returns:
+            str: A string representation of the User instance, including the values of name, email, password, and location.
+        """
         return f"User(name='{self.name}', email='{self.email}', password='{self.password}', location='{self.location}')"
