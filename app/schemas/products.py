@@ -29,3 +29,4 @@ class ProductList(ProductCreate):
     product_id: uuid.UUID
     created_at: datetime
     farmer_id: uuid.UUID
+    image: Optional[str] = None
