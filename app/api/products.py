@@ -17,11 +17,12 @@ router = APIRouter(
 
 @router.post("/", response_model=ProductList)
 def create_product(
+    # product: ProductCreate,
     product_name: str = Form(...),
     price: float = Form(...),
     description: str = Form(None),
     quantity: int = Form(...),
-    # product: ProductCreate,
+    category: str = Form(...),
     current_user: dict = Depends(get_current_user),
     db: Session = Depends(get_db),
     image: UploadFile = File(...)
@@ -43,6 +44,7 @@ def create_product(
                                    farmer_id=farmer.id,
                                     description=description,
                                     quantity=quantity,
+                                    category=category,
                                    image=image_path)
         
         db.add(new_product)

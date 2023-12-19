@@ -16,7 +16,7 @@ class ProductCreate(BaseModel):
     description: str = ""
     image: str = ""
     category: str = ""
-    location: str = ""
+    # location: str = ""
     farmer_id: Optional[str] = None
 
 
