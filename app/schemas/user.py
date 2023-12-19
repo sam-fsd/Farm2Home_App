@@ -20,7 +20,6 @@ class UserCreate(UserBase):
     """
     Represents a schema for creating a user.
     """
-
     pass
 
 
@@ -28,7 +27,7 @@ class FarmerCreate(UserCreate):
     """
     Represents a schema for creating a farmer user.
     """
-    bio: str
+    bio: Optional[str] = None
 
 
 class CustomerCreate(BaseModel):
@@ -38,7 +37,8 @@ class CustomerCreate(BaseModel):
     name: str
     email: str
     password: str
-    location: str  # Lets get customer location to allow matching with farmers
+    # location: Optional[str] = None  # Lets get customer location to allow matching with farmers
+    # phone: Optional[str] = None
 
 
 class UserLogin(BaseModel):
