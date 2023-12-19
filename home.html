@@ -29,6 +29,14 @@
           <li class="item"><a href="#">Our Farmers</a></li>
           <li class="item"><a href="#">About us</a></li>
           <li class="item"><a href="#">Contact Us</a></li>
+          <li class="item logged-in"><a href="#">My List</a></li>
+          <li class="item logged-in profile">
+            <a href="#">Profile</a>
+          </li>
+          <li class="item logged-in logout">
+            <a href="#">LogOut</a>
+          </li>
+
           <li class="item button"><a href="/login">Login</a></li>
           <li class="item button secondary"><a href="/register">Sign Up</a></li>
           <li class="toggle">
@@ -262,7 +270,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <div class="product-image-col">
+              <!-- <div class="product-image-col">
                 <div class="upload-image-container">
                   <img class="imagePreview" src="" alt="" />
                   <img
@@ -274,7 +282,8 @@
                     type="file"
                     accept="image/*"
                     id="imageInput"
-                    for="post-product-details"
+                    name="image"
+                    for="postProductForm"
                     onchange="previewImage(event)"
                   />
                   <label class="upload-btn" for="imageInput"
@@ -282,15 +291,37 @@
                   >
                 </div>
                 <button id="remove-image-btn">Remove Image</button>
-              </div>
+              </div> -->
               <div class="product-form-col">
                 <div class="form_product_details">
                   <form
                     action=""
                     method="post"
-                    id="post-product-details "
+                    id="postProductForm"
                     enctype="multipart/form-data"
                   >
+                    <div class="product-image-col">
+                      <div class="upload-image-container">
+                        <img class="imagePreview" src="" alt="" />
+                        <img
+                          class="upload-image-icon"
+                          src="static/assets/icons/icons8-upload-image-48.png"
+                          alt=""
+                        />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          id="imageInput"
+                          name="image"
+                          for="postProductForm"
+                          onchange="previewImage(event)"
+                        />
+                        <label class="upload-btn" for="imageInput"
+                          >Upload Image</label
+                        >
+                      </div>
+                      <button id="remove-image-btn">Remove Image</button>
+                    </div>
                     <div class="txt_field">
                       <label for="product-name">Product Name</label>
                       <input
@@ -309,10 +340,10 @@
                       <em>Make your caption brief and catchy</em>
                     </p>
                     <div class="txt_field">
-                      <label for="descpription">Description</label>
+                      <label for="description">Description</label>
                       <textarea
-                        name="descpription"
-                        id="descpription"
+                        name="description"
+                        id="description"
                         cols="30"
                         rows="2"
                         required
@@ -339,6 +370,15 @@
                         type="text"
                         id="productPrice"
                         name="price"
+                        required
+                      />
+                    </div>
+                    <div class="txt_field">
+                      <label for="productQuantity">Quantity</label>
+                      <input
+                        type="text"
+                        id="productQuantity"
+                        name="quantity"
                         required
                       />
                     </div>
@@ -450,6 +490,25 @@
       >
         <span class="add-sign">+</span>
       </button>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">Posted successfully</div>
+        </div>
+      </div>
     </section>
     <footer>
       <div class="footer-flex-container container">

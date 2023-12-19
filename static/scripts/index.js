@@ -10,6 +10,16 @@ $(document).ready(function () {
   const loginBtn = $('#loginBtn');
   const moreDetailsBtn = $('.more-details');
 
+  // Change Menu once user logs in
+  const token = localStorage.getItem('token');
+  if (token) {
+    $('.button').css('display', 'none');
+    $('.logged-in').css('display', 'block');
+  } else {
+    $('.logged-in').css('display', 'none');
+  }
+
+  //Toggle menu dropdown
   $('.toggle').on('click', function () {
     if ($('.item').hasClass('active')) {
       $('.item').removeClass('active');
@@ -190,6 +200,7 @@ $(document).ready(function () {
       data: formData,
       processData: false,
       success: (data) => {
+        localStorage.setItem('token', data.access_token);
         window.location.href = '/home';
       },
       error: (err) => {
@@ -199,4 +210,108 @@ $(document).ready(function () {
   };
 
   loginBtn.on('click', loginUser);
+
+  $('.logout').on('click', function () {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  });
+
+  // Display modal if user is logged in
+  $('.display-post-product-modal').on('click', function () {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login';
+    }
+  });
+
+  // Post product
+  const postProduct = () => {
+    const form = $('#postProductForm')[0];
+    const formData = new FormData(form);
+
+    $.ajax({
+      url: '/api/v1/products',
+      type: 'POST',
+      contentType: false,
+      processData: false,
+      data: formData,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      success: (data) => {
+        $('#liveToast').addClass('fade show');
+        window.location.href = '/home';
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  };
+
+  $('.post_btn').on('click', postProduct);
+
+  // const addProductToList = (product) => {
+  //   const productTemplate = `
+  //   <div class="col-md-4 col-sm-6">
+  //     <div class="card mb-4">
+  //       <img src="${product.image}" class="card-img-top" alt="...">
+  //       <div class="card-body">
+  //         <h5 class="card-title">${product.name}</h5>
+  //         <p class="card-text">${product.description}</p>
+  //         <p class="card-text">Price: ${product.price}</p>
+  //         <p class="card-text">Quantity: ${product.quantity}</p>
+  //         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-product='${JSON.stringify(
+  //           product
+  //         )}'>More Details</button>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   `;
+
+  //   $('.products-list').append(productTemplate);
+  // };
+
+  // Add product to list
+  if (window.location.pathname === '/home') {
+    $.ajax({
+      url: '/api/v1/products',
+      type: 'GET',
+      success: (data) => {
+        console.log(data);
+        // data.data.forEach((product) => {
+        //   // addProductToList(product);
+        //   const productTemplate = `
+        //   <div class="col-md-4 col-sm-6">
+        //     <div class="card mb-4">
+        //       <img src="${product.image}" class="card-img-top" alt="...">
+        //       <div class="card-body">
+        //         <h5 class="card-title">${product.name}</h5>
+        //         <p class="card-text">${product.description}</p>
+        //         <p class="card-text">Price: ${product.price}</p>
+        //         <p class="card-text">Quantity: ${product.quantity}</p>
+        //         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-product='${JSON.stringify(
+        //           product
+        //         )}'>More Details</button>
+        //       </div>
+        //     </div>
+        //   </div>
+        //   `;
+        //   $('.products-list').append(productTemplate);
+        // });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  // Save product to a list
+  const productList = [];
+  if (token) {
+    $('.save-product').on('click', function () {
+      const product = JSON.parse($(this).attr('data-product'));
+      productList.push(product);
+      localStorage.setItem('productList', JSON.stringify(productList));
+    });
+  }
 });

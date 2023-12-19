@@ -728,6 +728,16 @@ footer {
 /* Desktop menu */
 
 @media all and (min-width: 768px) {
+  .logout {
+    text-decoration: underline;
+  }
+
+  .logout:hover {
+    color: red;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
   .product-card-grid {
     display: grid;
 
@@ -958,4 +968,8 @@ footer {
   .search-product-bar {
     left: 35%;
   }
+}
+
+.toast-body {
+  background-color: #6af068;
 }
