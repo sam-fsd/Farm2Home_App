@@ -19,6 +19,8 @@ Base.metadata.create_all(bind=engine)
 # call the frontend files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/pages", StaticFiles(directory="pages"), name="pages")
+app.mount("/images", StaticFiles(directory="images"), name="images")
+
 # call the api routes
 app.include_router(products_router)
 app.include_router(farmers_router)
