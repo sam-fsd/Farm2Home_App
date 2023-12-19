@@ -78,7 +78,7 @@ def search_product(product_name: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Product not found")
     return products
 
-@router.get("{product_id}/location", response_model=str)
+@router.get("/{product_id}/location", response_model=str)
 def get_farmer_location(product_id: str, db: Session = Depends(get_db)):
     product = db.query(ProductModel).filter(ProductModel.product_id==product_id).first()
     if not product:
@@ -87,3 +87,13 @@ def get_farmer_location(product_id: str, db: Session = Depends(get_db)):
     if not farmer:
         raise HTTPException(status_code=404, detail="Farmer not found")
     return farmer.location
+
+@router.get("/{product_id}/phone", response_model=str)
+def get_farmer_phone(product_id: str, db: Session = Depends(get_db)):
+    product = db.query(ProductModel).filter(ProductModel.product_id==product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    farmer = db.query(FarmerModel).filter(FarmerModel.id == product.farmer_id).first()
+    if not farmer:
+        raise HTTPException(status_code=404, detail="Farmer not found")
+    return farmer.phone
