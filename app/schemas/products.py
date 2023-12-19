@@ -16,6 +16,7 @@ class ProductCreate(BaseModel):
     description: str = ""
     image: str = ""
     category: str = ""
+    location: str = ""
     farmer_id: Optional[str] = None
 
 
@@ -23,10 +24,7 @@ class ProductList(ProductCreate):
     """
     Represents a product with additional fields for the product ID,
     creation timestamp, and farmer ID.
-
     """
-
     product_id: uuid.UUID
     created_at: datetime
     farmer_id: uuid.UUID
-    image: Optional[str] = None

@@ -61,6 +61,13 @@ def get_products(db: Session = Depends(get_db)):
     products = db.query(ProductModel).all()
     return products
 
+@router.get("/{product_id}", response_model=ProductList)
+def get_one_product(product_id: str, db: Session = Depends(get_db)):
+    one_product = db.query(ProductModel).filter(ProductModel.product_id==product_id).first()
+    if not one_product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return one_product
+
 @router.get("/search/{product_name}", response_model=List[ProductList])
 def search_product(product_name: str, db: Session = Depends(get_db)):
     products = db.query(ProductModel).filter(ProductModel.product_name.ilike(f'%{product_name}%')).all()
