@@ -12,7 +12,7 @@ router = APIRouter(
     prefix = '/api/v1/farmers',
     tags = ['Farmers']
 )
-
+ 
 
 @router.get("/", response_model=List[Farmer])
 def get_farmers(db: Session = Depends(get_db)):
