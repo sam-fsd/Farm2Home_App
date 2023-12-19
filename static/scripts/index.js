@@ -8,7 +8,6 @@ $(document).ready(function () {
   const uploadImageContainer = $('.upload-image-container');
   const removeImageBtn = $('#remove-image-btn');
   const loginBtn = $('#loginBtn');
-  const moreDetailsBtn = $('.more-details');
 
   // Change Menu once user logs in
   const token = localStorage.getItem('token');
@@ -49,18 +48,6 @@ $(document).ready(function () {
     $(this).css('display', 'none');
     uploadBtn.removeClass('hide');
     uploadImageContainer.css('border', '2px dashed #fff');
-  });
-
-  const attributes = {
-    'data-bs-toggle': 'modal',
-    'data-bs-target': '#productDetailsModal',
-  };
-
-  // Copy attributes to each 'moreDetailsBtn' element
-  moreDetailsBtn.each(function () {
-    for (const [key, value] of Object.entries(attributes)) {
-      $(this).attr(key, value);
-    }
   });
 
   window.previewImage = function (event) {
@@ -277,33 +264,102 @@ $(document).ready(function () {
       url: '/api/v1/products',
       type: 'GET',
       success: (data) => {
-        console.log(data);
-        // data.data.forEach((product) => {
-        //   // addProductToList(product);
-        //   const productTemplate = `
-        //   <div class="col-md-4 col-sm-6">
-        //     <div class="card mb-4">
-        //       <img src="${product.image}" class="card-img-top" alt="...">
-        //       <div class="card-body">
-        //         <h5 class="card-title">${product.name}</h5>
-        //         <p class="card-text">${product.description}</p>
-        //         <p class="card-text">Price: ${product.price}</p>
-        //         <p class="card-text">Quantity: ${product.quantity}</p>
-        //         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-product='${JSON.stringify(
-        //           product
-        //         )}'>More Details</button>
-        //       </div>
-        //     </div>
-        //   </div>
-        //   `;
-        //   $('.products-list').append(productTemplate);
-        // });
+        data.forEach((product) => {
+          // Get product location
+          $.ajax({
+            url: `/api/v1/products/${product.product_id}/location`,
+            type: 'GET',
+            success: (data) => {
+              const location = data;
+              const productTemplate = `
+                <div class="product-card card-one" data-product-id=${product.product_id}>
+                  <div class="product-card-img">
+                    <img src="${product.image}" alt="" />
+                  </div>
+                  <div class="product-card-text">
+                    <p class="category">${product.category}</p>
+                    <h4>${product.description}</h4>
+                    <p class="price">Price: Kshs. ${product.price}</p>
+                    <div class="farmer-location">
+                      <img src="static/assets/icons/icons8-location-50 (1).png" alt="" />
+                      <p class="location">${location}</p>
+                    </div>
+                    <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
+                    <a href="#" class="more-details"data-bs-toggle="modal" data-bs-target="#productDetailsModal">more details</a>
+                  </div>
+                </div>
+              `;
+              $('.product-card-grid').append(productTemplate);
+            },
+            error: (err) => {
+              console.log(err);
+            },
+          });
+        });
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
+  const moreDetailsBtn = $('.more-details');
+
+  const attributes = {
+    'data-bs-toggle': 'modal',
+    'data-bs-target': '#productDetailsModal',
+  };
+
+  // Copy attributes to each 'moreDetailsBtn' element
+  moreDetailsBtn.each(function () {
+    for (const [key, value] of Object.entries(attributes)) {
+      $(this).attr(key, value);
+    }
+  });
+
+  //search products
+  const searchProducts = () => {
+    const searchInput = $('#searchInput').val();
+    $.ajax({
+      url: `/api/v1/products/search/${searchInput}`,
+      type: 'GET',
+      success: (data) => {
+        console.log(data);
+        //$('.product-card-grid').empty();
+        // data.forEach((product) => {
+        //   const productTemplate = `
+        //   <div class="product-card card-one" data-product-id=${product.product_id}>
+        //   <div class="product-card-img">
+        //     <img
+        //       src="${product.image}"
+        //       alt=""
+        //     />
+        //   </div>
+        //   <div class="product-card-text">
+        //     <p class="category">${product.category}</p>
+        //     <h4>${product.description}</h4>
+        //     <p class="price">${product.price}</p>
+        //     <div class="farmer-location">
+        //       <img
+        //         src="static/assets/icons/icons8-location-50 (1).png"
+        //         alt=""
+        //       />
+        //       <p class="location">${product.location}</p>
+        //     </div>
+        //     <a href="static/pages/signup.html"
+        //       ><button class="add-to-list">Add to list</button></a
+        //     >
+        //     <a href="#" class="more-details">more details</a>
+        //   </div>
+        // </div>
+        // `;
+        // $('.product-card-grid').append(productTemplate);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  };
+  $('.search-btn').on('click', searchProducts);
 
   // Save product to a list
   const productList = [];
