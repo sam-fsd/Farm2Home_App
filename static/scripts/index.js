@@ -188,10 +188,12 @@ $(document).ready(function () {
       processData: false,
       success: (data) => {
         localStorage.setItem('token', data.access_token);
+        $('.login-error').css('display', 'none');
+
         window.location.href = '/home';
       },
       error: (err) => {
-        console.log(err);
+        $('.login-error').css('display', 'block');
       },
     });
   };
@@ -210,7 +212,6 @@ $(document).ready(function () {
       window.location.href = '/login';
     }
   });
-
   // Post product
   const postProduct = () => {
     const form = $('#postProductForm')[0];
@@ -229,7 +230,7 @@ $(document).ready(function () {
         $('#liveToast').addClass('fade show');
         setTimeout(() => {
           window.location.href = '/home';
-        }, 2500);
+        }, 2000);
       },
       error: (err) => {
         console.log(err);
@@ -238,20 +239,6 @@ $(document).ready(function () {
   };
 
   $('.post_btn').on('click', postProduct);
-
-  const moreDetailsBtn = $('.more-details');
-
-  const attributes = {
-    'data-bs-toggle': 'modal',
-    'data-bs-target': '#productDetailsModal',
-  };
-
-  // Copy attributes to each 'moreDetailsBtn' element
-  moreDetailsBtn.each(function () {
-    for (const [key, value] of Object.entries(attributes)) {
-      $(this).attr(key, value);
-    }
-  });
 
   // Add product to list
   if (window.location.pathname === '/home') {
@@ -280,11 +267,86 @@ $(document).ready(function () {
                       <p class="location">${location}</p>
                     </div>
                     <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
-                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
+                    <a href="#" class="more-details"  data-product-id="${product.product_id}">more details</a>
                   </div>
                 </div>
               `;
               $('.product-card-grid').prepend(productTemplate);
+              // Get DOM Elements
+              const modal = document.querySelector('#productDetailsModal');
+              const modalBtn = document.querySelectorAll('.more-details');
+              const closeBtn = document.querySelector('.close');
+
+              // Events
+              modalBtn.forEach((btn) => {
+                btn.addEventListener('click', openModal);
+              });
+              closeBtn.addEventListener('click', closeModal);
+              window.addEventListener('click', outsideClick);
+
+              // Open
+              function openModal() {
+                modal.style.display = 'block';
+              }
+
+              // Close
+              function closeModal() {
+                modal.style.display = 'none';
+              }
+
+              // Close If Outside Click
+              function outsideClick(e) {
+                if (e.target == modal) {
+                  modal.style.display = 'none';
+                }
+              }
+
+              // Update modal content
+              // Make an ajax request to get product details
+
+              $('.more-details').on('click', function () {
+                // Get product id from the clicked element
+                let productId = $(this).attr('data-product-id');
+                $.ajax({
+                  url: `/api/v1/products/${productId}`,
+                  type: 'GET',
+                  success: (product) => {
+                    // Update modal title
+                    $('.modal-title').text(product.description);
+
+                    // Update modal image
+                    $('.modal-image').attr('src', product.image);
+
+                    // Update other modal content
+                    $('.modal-price').text(`Price: Kshs. ${product.price}`);
+                    $('.product-blog').text(product.description);
+                    $('.product-category').text(product.category);
+                    $('.modal-show-contact').text('Show contact');
+
+                    // Show modal
+                    $('#productDetailsModal').css('display', 'block');
+
+                    if (token) {
+                      $('.modal-show-contact').on('click', function () {
+                        $.ajax({
+                          url: `/api/v1/farmers/${product.farmer_id}`,
+                          type: 'GET',
+                          success: (farmer) => {
+                            $('.modal-show-contact').text(farmer.phone);
+                          },
+                        });
+                      });
+                    } else {
+                      $('.modal-show-contact').on('click', function () {
+                        window.location.href = '/login';
+                      });
+                    }
+                  },
+                  error: (err) => {
+                    console.log('Error Fetching product details:', err);
+                  },
+                });
+              });
             },
             error: (err) => {
               console.log(err);
@@ -328,7 +390,7 @@ $(document).ready(function () {
                       <p class="location">${location}</p>
                     </div>
                     <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
-                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
+                    <a href="#" class="more-details" data-product-id="${product.product_id}">more details</a>
                   </div>
                 </div>
               `;
@@ -376,7 +438,7 @@ $(document).ready(function () {
                       <p class="location">${location}</p>
                     </div>
                     <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
-                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
+                    <a href="#" class="more-details"  data-product-id="${product.product_id}">more details</a>
                   </div>
                 </div>
               `;
@@ -394,48 +456,4 @@ $(document).ready(function () {
       });
     }
   });
-
-  // Update modal content
-  // window.updateModalContent = function (productId) {
-  //   // Get product id from the clicked element
-  //   console.log(productId);
-
-  //   // Make an ajax request to get product details
-  //   if (productId) {
-  //     $.ajax({
-  //       url: `/api/v1/products/${productId}`,
-  //       type: 'GET',
-  //       success: (product) => {
-  //         console.log(product);
-
-  //         // Update modal title
-  //         $('.modal-title').text(product.description);
-
-  //         // Update modal image
-  //         $('.modal-image').attr('src', product.image);
-
-  //         // Update other modal content
-  //         $('.modal-price').text(`Price: Kshs. ${product.price}`);
-  //         $('.product-blog').text(product.description);
-  //         $('.product-category').text(product.category);
-
-  //         // Show modal
-  //         $('#productDetailsModal').modal('show');
-  //       },
-  //       error: (err) => {
-  //         console.log('Error Fetching product details:', err);
-  //       },
-  //     });
-  //   }
-  // };
-
-  // Save product to a list
-  const productList = [];
-  if (token) {
-    $('.save-product').on('click', function () {
-      const product = JSON.parse($(this).attr('data-product'));
-      productList.push(product);
-      localStorage.setItem('productList', JSON.stringify(productList));
-    });
-  }
 });
