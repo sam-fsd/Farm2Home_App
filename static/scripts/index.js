@@ -227,7 +227,9 @@ $(document).ready(function () {
       },
       success: (data) => {
         $('#liveToast').addClass('fade show');
-        window.location.href = '/home';
+        setTimeout(() => {
+          window.location.href = '/home';
+        }, 2500);
       },
       error: (err) => {
         console.log(err);
@@ -237,26 +239,19 @@ $(document).ready(function () {
 
   $('.post_btn').on('click', postProduct);
 
-  // const addProductToList = (product) => {
-  //   const productTemplate = `
-  //   <div class="col-md-4 col-sm-6">
-  //     <div class="card mb-4">
-  //       <img src="${product.image}" class="card-img-top" alt="...">
-  //       <div class="card-body">
-  //         <h5 class="card-title">${product.name}</h5>
-  //         <p class="card-text">${product.description}</p>
-  //         <p class="card-text">Price: ${product.price}</p>
-  //         <p class="card-text">Quantity: ${product.quantity}</p>
-  //         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-product='${JSON.stringify(
-  //           product
-  //         )}'>More Details</button>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   `;
+  const moreDetailsBtn = $('.more-details');
 
-  //   $('.products-list').append(productTemplate);
-  // };
+  const attributes = {
+    'data-bs-toggle': 'modal',
+    'data-bs-target': '#productDetailsModal',
+  };
+
+  // Copy attributes to each 'moreDetailsBtn' element
+  moreDetailsBtn.each(function () {
+    for (const [key, value] of Object.entries(attributes)) {
+      $(this).attr(key, value);
+    }
+  });
 
   // Add product to list
   if (window.location.pathname === '/home') {
@@ -285,11 +280,11 @@ $(document).ready(function () {
                       <p class="location">${location}</p>
                     </div>
                     <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
-                    <a href="#" class="more-details"data-bs-toggle="modal" data-bs-target="#productDetailsModal">more details</a>
+                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
                   </div>
                 </div>
               `;
-              $('.product-card-grid').append(productTemplate);
+              $('.product-card-grid').prepend(productTemplate);
             },
             error: (err) => {
               console.log(err);
@@ -302,21 +297,8 @@ $(document).ready(function () {
       },
     });
   }
-  const moreDetailsBtn = $('.more-details');
 
-  const attributes = {
-    'data-bs-toggle': 'modal',
-    'data-bs-target': '#productDetailsModal',
-  };
-
-  // Copy attributes to each 'moreDetailsBtn' element
-  moreDetailsBtn.each(function () {
-    for (const [key, value] of Object.entries(attributes)) {
-      $(this).attr(key, value);
-    }
-  });
-
-  //search products
+  //Search products
   const searchProducts = () => {
     const searchInput = $('#searchInput').val();
     $.ajax({
@@ -324,35 +306,39 @@ $(document).ready(function () {
       type: 'GET',
       success: (data) => {
         console.log(data);
-        //$('.product-card-grid').empty();
-        // data.forEach((product) => {
-        //   const productTemplate = `
-        //   <div class="product-card card-one" data-product-id=${product.product_id}>
-        //   <div class="product-card-img">
-        //     <img
-        //       src="${product.image}"
-        //       alt=""
-        //     />
-        //   </div>
-        //   <div class="product-card-text">
-        //     <p class="category">${product.category}</p>
-        //     <h4>${product.description}</h4>
-        //     <p class="price">${product.price}</p>
-        //     <div class="farmer-location">
-        //       <img
-        //         src="static/assets/icons/icons8-location-50 (1).png"
-        //         alt=""
-        //       />
-        //       <p class="location">${product.location}</p>
-        //     </div>
-        //     <a href="static/pages/signup.html"
-        //       ><button class="add-to-list">Add to list</button></a
-        //     >
-        //     <a href="#" class="more-details">more details</a>
-        //   </div>
-        // </div>
-        // `;
-        // $('.product-card-grid').append(productTemplate);
+        $('.product-card-grid').empty();
+        data.forEach((product) => {
+          // Get product location
+          $.ajax({
+            url: `/api/v1/products/${product.product_id}/location`,
+            type: 'GET',
+            success: (data) => {
+              const location = data;
+              const productTemplate = `
+                <div class="product-card card-one" data-product-id=${product.product_id}>
+                  <div class="product-card-img">
+                    <img src="${product.image}" alt="" />
+                  </div>
+                  <div class="product-card-text">
+                    <p class="category">${product.category}</p>
+                    <h4>${product.description}</h4>
+                    <p class="price">Price: Kshs. ${product.price}</p>
+                    <div class="farmer-location">
+                      <img src="static/assets/icons/icons8-location-50 (1).png" alt="" />
+                      <p class="location">${location}</p>
+                    </div>
+                    <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
+                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
+                  </div>
+                </div>
+              `;
+              $('.product-card-grid').prepend(productTemplate);
+            },
+            error: (err) => {
+              console.log(err);
+            },
+          });
+        });
       },
       error: (err) => {
         console.log(err);
@@ -360,6 +346,88 @@ $(document).ready(function () {
     });
   };
   $('.search-btn').on('click', searchProducts);
+
+  // return products if there is no search input
+  $('#searchInput').on('input', function () {
+    if (!$(this).val()) {
+      $.ajax({
+        url: '/api/v1/products',
+        type: 'GET',
+        success: (data) => {
+          $('.product-card-grid').empty();
+          data.forEach((product) => {
+            // Get product location
+            $.ajax({
+              url: `/api/v1/products/${product.product_id}/location`,
+              type: 'GET',
+              success: (data) => {
+                const location = data;
+                const productTemplate = `
+                <div class="product-card card-one" data-product-id=${product.product_id}>
+                  <div class="product-card-img">
+                    <img src="${product.image}" alt="" />
+                  </div>
+                  <div class="product-card-text">
+                    <p class="category">${product.category}</p>
+                    <h4>${product.description}</h4>
+                    <p class="price">Price: Kshs. ${product.price}</p>
+                    <div class="farmer-location">
+                      <img src="static/assets/icons/icons8-location-50 (1).png" alt="" />
+                      <p class="location">${location}</p>
+                    </div>
+                    <a href="static/pages/signup.html"><button class="add-to-list">Add to list</button></a>
+                    <a href="#" class="more-details" data-bs-toggle="modal" data-bs-target="#productDetailsModal" onclick="updateModalContent(${product.product_id})">more details</a>
+                  </div>
+                </div>
+              `;
+                $('.product-card-grid').prepend(productTemplate);
+              },
+              error: (err) => {
+                console.log(err);
+              },
+            });
+          });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+  });
+
+  // Update modal content
+  // window.updateModalContent = function (productId) {
+  //   // Get product id from the clicked element
+  //   console.log(productId);
+
+  //   // Make an ajax request to get product details
+  //   if (productId) {
+  //     $.ajax({
+  //       url: `/api/v1/products/${productId}`,
+  //       type: 'GET',
+  //       success: (product) => {
+  //         console.log(product);
+
+  //         // Update modal title
+  //         $('.modal-title').text(product.description);
+
+  //         // Update modal image
+  //         $('.modal-image').attr('src', product.image);
+
+  //         // Update other modal content
+  //         $('.modal-price').text(`Price: Kshs. ${product.price}`);
+  //         $('.product-blog').text(product.description);
+  //         $('.product-category').text(product.category);
+
+  //         // Show modal
+  //         $('#productDetailsModal').modal('show');
+  //       },
+  //       error: (err) => {
+  //         console.log('Error Fetching product details:', err);
+  //       },
+  //     });
+  //   }
+  // };
 
   // Save product to a list
   const productList = [];
