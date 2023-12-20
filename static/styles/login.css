@@ -70,7 +70,7 @@ h1 {
   text-transform: capitalize;
 }
 
-.modal-title p {
+.modal-title .title {
   color: #000;
   font-family: Roboto;
   font-size: 16px;
@@ -79,6 +79,18 @@ h1 {
   line-height: normal;
   text-transform: capitalize;
   text-align: center;
+}
+
+.login-error {
+  color: red;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  text-align: center;
+  display: none;
 }
 
 form .txt_field {
